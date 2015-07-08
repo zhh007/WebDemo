@@ -1,0 +1,22 @@
+<html>
+<head>
+  <link href="dist/css/select2.min.css" rel="stylesheet" />
+  <script src="jquery-1.9.1.js"></script>
+  <script src="dist/js/select2.min.js"></script>
+</head>
+<body>
+<select class="combox" style="width:200px" multiple="multiple">
+  <option value="a">A</option>
+  <option value="aa">AA</option>
+  <option value="ab">AB</option>
+  <option value="ac">AC</option>
+</select>
+
+</body>
+</html>
+<script type="text/javascript">
+  $('select').select2({
+    tags: true,
+    maximumSelectionLength: 1
+  });
+</script>
