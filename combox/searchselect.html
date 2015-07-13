@@ -58,12 +58,26 @@ $("#dataselect").select2({
     templateResult: formatRepo, // omitted for brevity, see the source of this page
     templateSelection: formatRepoSelection // omitted for brevity, see the source of this page
   });
+
   function formatRepo (repo) {
     if (repo.loading) return null;//repo.text;
     return repo.text;
   }
 
   function formatRepoSelection (repo) {
+    //删除旧数据
+    var len = $('#ajaxselect option').length;
+    var opts = $('#ajaxselect option');
+    for (var i = len-1; i >= 0; i--) {
+        if (i == len - 1) {
+            continue;
+        }
+        $(opts[i]).remove();
+    }
     return repo.text;
   }
+
+  $('#ajaxselect').on("select2:select", function (e) {
+      console.log($(this).text() + "-" + $(this).val());
+  });
 </script>
