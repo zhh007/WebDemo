@@ -1,9 +1,22 @@
 <html>
 <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <link href="jquery-ui-1.11.4.custom/jquery-ui.min.css" rel="stylesheet" />
   <script src="jquery-1.9.1.js"></script>
   <script src="jquery-ui-1.11.4.custom/jquery-ui.min.js"></script>
   <style>
+  .ui-autocomplete {
+    max-height: 100px;
+    overflow-y: auto;
+    /* prevent horizontal scrollbar */
+    overflow-x: hidden;
+  }
+  /* IE 6 doesn't support max-height
+   * we use height instead, but this forces the menu to always be this tall
+   */
+  * html .ui-autocomplete {
+    height: 100px;
+  }
   .custom-combobox {
     position: relative;
     display: inline-block;
@@ -69,6 +82,7 @@
           .autocomplete({
             delay: 0,
             minLength: 0,
+            scroll: true,
             source: $.proxy( this, "_source" )
           })
           .tooltip({
@@ -84,6 +98,10 @@
             this.input.attr( "selectvalue", ui.item.option.value );
           },
           autocompletechange: "_removeIfInvalid"
+        });
+
+        $(this.input).focus(function(){
+            $(this).autocomplete( "search" , this.value );
         });
       },
       _source: function( request, response ) {
