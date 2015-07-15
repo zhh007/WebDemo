@@ -1,0 +1,80 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title></title>
+    <script src="jquery-1.9.1.js"></script>
+    <style>
+    #bg {
+        display: none;
+        position: absolute;
+        top: 0%;
+        left: 0%;
+        width: 100%;
+        height: 100%;
+        background-color: black;
+        z-index: 1001;
+        -moz-opacity: 0.5;
+        opacity: .50;
+        filter: alpha(opacity=50);
+        display:none;
+    }
+    </style>
+</head>
+<body>
+<button onclick="btnclick()">测试</button>
+
+</body>
+
+</html>
+<script type="text/javascript">
+    $(function () {
+        var loadingHtml = '<div id="loading" class="loading" style="';
+        loadingHtml += 'position:fixed;width:240px;font-size:16px;text-align:center;z-index:10000;padding:10px;'
+        loadingHtml += 'border:1px solid grey;display:none;background:yellow;">Loading...</div>';
+        $(document.body).append('<div id="bg"></div>');
+        $(document.body).append(loadingHtml);
+        $("#loading").offset({
+            left: ($(window).width() - $("#loading").width()) / 2,
+            top: 0
+        });
+
+        var doing = false;
+        $(document).ajaxStart(function () {
+        }).ajaxSend(function (e, xhr, opts) {
+          doing = true;
+          if (opts.type == 'POST') {
+              $("#loading").html("Loading");
+              $("#bg,#loading").show();
+          }
+        }).ajaxError(function (e, xhr, opts) {
+            //if (590 == xhr.status) {
+            //    document.location.replace('/Userlogin/login');
+            //    return;
+            //}
+
+            $("#loading").text("发生错误，请联系管理员。");
+        }).ajaxSuccess(function (e, xhr, opts) {
+        }).ajaxComplete(function (e, xhr, opts) {
+        }).ajaxStop(function (e, xhr, opts) {
+            doing = false;
+            $("#bg").hide();
+            self.setTimeout(function () {
+              if(doing == false) {
+                $("#loading").hide();
+              }
+            }, 4000);
+        });
+
+    });
+
+function btnclick(){
+  $.post('http://www.163.com'
+      , {}
+      , function (data) {
+      }
+  );
+}
+</script>
