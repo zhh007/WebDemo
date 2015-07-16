@@ -133,6 +133,8 @@
             this.selected = valid = true;
             inputitem.attr( "selectvalue", this.value );
             return false;
+          } else {
+            this.selected = false;
           }
         });
 
