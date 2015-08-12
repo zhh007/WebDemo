@@ -1,0 +1,71 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>倒记时效果</title>
+</head>
+<body>
+<SCRIPT type="text/javascript">
+<!--
+var target=[]
+var time_id=[]
+function show_date_time_0(){
+    setTimeout("show_date_time_0()", 1000);
+    for (var i=0,j=target.length;i<j;i++){
+        today=new Date();
+        timeold=target[i]-today.getTime();
+        sectimeold=timeold/1000;
+        secondsold=Math.floor(sectimeold);
+        msPerDay=24*60*60*1000;
+        e_daysold=timeold/msPerDay;
+        daysold=Math.floor(e_daysold);
+        e_hrsold=(e_daysold-daysold)*24;
+        hrsold=Math.floor(e_hrsold);
+        e_minsold=(e_hrsold-hrsold)*60;
+        minsold=Math.floor((e_hrsold-hrsold)*60);
+        seconds=Math.floor((e_minsold-minsold)*60);
+        if (daysold<0) {
+            document.getElementById(time_id[i]).innerHTML="逾期,倒计时已经失效";
+        } else {
+            if (daysold<10) {daysold="0"+daysold}
+            if (daysold<100) {daysold="0"+daysold}
+            if (hrsold<10) {hrsold="0"+hrsold}
+            if (minsold<10) {minsold="0"+minsold}
+            if (seconds<10) {seconds="0"+seconds}
+            if (daysold<3) {
+                document.getElementById(time_id[i]).innerHTML="<font color=red>"+daysold+"天"+hrsold+"小时"+minsold+"分"+seconds+"秒</font>";
+            } else {
+                document.getElementById(time_id[i]).innerHTML=daysold+"天"+hrsold+"小时"+minsold+"分"+seconds+"秒";
+            }
+        }
+    }
+}
+setTimeout("show_date_time_0()", 100);
+//-->
+</SCRIPT>
+距5.1（女友生日）还有：
+<div id="TimeCounter_0" style="border:1px solid black;margin:5px;padding:2px;width:140px"></div>
+<SCRIPT>
+//设定目标时间(数组元素)
+//target[target.length]=new Date(年,月-1,日,时,分,秒).getTime()
+target[target.length]=new Date(2015,12,01,00,00,00).getTime();
+//设定倒计时显示地址(数组元素)
+time_id[time_id.length]="TimeCounter_0"
+</SCRIPT>
+
+
+距国家公务员考试还有(12.9)：
+<div id="TimeCounter_1" style="border:1px solid black;margin:5px;padding:2px;width:140px"></div>
+<SCRIPT>
+target[target.length]=new Date(2008,11,9,09,00,00).getTime()
+time_id[time_id.length]="TimeCounter_1"
+</SCRIPT>
+
+
+距奥运会还有(8.8-20:08)：
+<div id="TimeCounter_3" style="border:1px solid black;margin:5px;padding:2px;width:140px"></div>
+<SCRIPT>
+target[target.length]=new Date(2008,7,8,20,8,0).getTime()
+time_id[time_id.length]="TimeCounter_3"
+</SCRIPT>
+</body>
+</html>
