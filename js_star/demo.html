@@ -1,13 +1,12 @@
-
-http://stackoverflow.com/questions/1987524/turn-a-number-into-star-rating-display-using-jquery-and-css/1987545<html>
+<html>
 <head>
-	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
+	<script type="text/javascript" src="jquery-1.9.1.js"></script>
 	<script type="text/javascript">
-   		$(function() {    		
+   		$(function() {
 			$('input[type=submit]').click(function() {
 				$('p').html('<span class="stars">'+parseFloat($('input[name=amount]').val())+'</span>');
 				$('span.stars').stars();
-			});    		
+			});
 			$('input[type=submit]').click();
 		});
 
@@ -24,14 +23,14 @@ http://stackoverflow.com/questions/1987524/turn-a-number-into-star-rating-displa
 			width: 80px;
 			height: 16px;
 		}
-	
+
 		span.stars span {
 			background-position: 0 0;
 		}
 	</style>
 </head>
 <body>
-
+http://stackoverflow.com/questions/1987524/turn-a-number-into-star-rating-display-using-jquery-and-css/1987545
 	<input type="text" name="amount" value="2.53" />
 	<input type="submit" value="update">
 <p>
@@ -39,4 +38,3 @@ http://stackoverflow.com/questions/1987524/turn-a-number-into-star-rating-displa
 
 </body>
 </html>
-
