@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>文本溢出</title>
+    <style type="text/css">
+        /*单行文本溢出。。。*/
+        .inaline {
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+        /*多行文本溢出。。。*/
+        .intwoline {
+            display: -webkit-box !important;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            word-break: break-all;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2; /*2行*/
+        }
+    </style>
+</head>
+<body>
+    
+</body>
+</html>
