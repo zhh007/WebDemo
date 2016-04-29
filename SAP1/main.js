@@ -11,7 +11,7 @@
             director: 'assets/js/director.min',
             zepto: 'assets/js/zepto.min',
             underscore: 'assets/js/underscore-min',
-            text: 'assets/js/text',             //用于requirejs导入html类型的依赖
+            text: 'assets/js/text.min',             //用于requirejs导入html类型的依赖
             //router: 'router'
         },
         shim: {                     //引入没有使用requirejs模块写法的类库。
