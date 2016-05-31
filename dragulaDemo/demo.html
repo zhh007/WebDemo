@@ -8,11 +8,11 @@
 </head>
 <body>
     <div style="width:100%" id="box">
-        <div class="width:250px; float:left">
+        <div id="divLeft" class="width:250px; float:left">
             <div class="ctrl" style="background:#eee; height:50px; margin:10px">A</div>
             <div class="ctrl" style="background:#eee; height:50px; margin:10px">B</div>
         </div>
-        <div class="margin-left:300px; float:left">
+        <div id="divRight" class="margin-left:300px; float:left">
             <div class="dragula-container" style="border:1px solid blue; margin:10px; min-height:50px"></div>
             <div class="dragula-container" style="border:1px solid blue; margin:10px; min-height:50px"></div>
         </div>
@@ -21,14 +21,14 @@
 </html>
 <script>
     $(function(){
-        var drake = dragula([document.getElementById("box")], {
+        var drake = dragula([document.getElementById("divLeft"), $(".dragula-container")], {
             isContainer: function (el) {
                 return $(el).hasClass('dragula-container');
             }, moves: function (el, source, handle, sibling) {
                 return $(el).hasClass('ctrl'); // elements are always draggable by default
             },
             accepts: function (el, target, source, sibling) {
-                return true; // elements can be dropped in any of the `containers` by default
+                return $(el).hasClass('ctrl'); // elements can be dropped in any of the `containers` by default
             },
             invalid: function (el, handle) {
                 return false; // don't prevent any drags from initiating by default
