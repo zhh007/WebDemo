@@ -1,0 +1,27 @@
+{
+  "name": "dragulademo",
+  "description": "dragula demo",
+  "main": "",
+  "keywords": [
+    "drag"
+  ],
+  "authors": [
+    "zhh007"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^2.2.4",
+    "underscore": "^1.8.3",
+    "backbone": "^1.3.3",
+    "bootstrap": "^3.3.6",
+    "dragula.js": "dragula#^3.7.1"
+  }
+}
