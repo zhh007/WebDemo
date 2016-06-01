@@ -4,13 +4,14 @@ var connect = require('gulp-connect');
 
 //创建watch任务去检测html文件,其定义了当html改动之后，去调用一个Gulp的Task
 gulp.task('watch', function () {
-  gulp.watch(['./demo.html'], ['html']);
+  gulp.watch(['./*.html', './src/*.html', './test/*.html'], ['html']);
 });
 
 //使用connect启动一个Web服务器
 gulp.task('connect', function () {
   connect.server({
     root: '.',
+    port: 9909,
     livereload: true
   });
 });

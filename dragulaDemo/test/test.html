@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Document</title>
+    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/bower_components/dragula.js/dist/dragula.min.css">
+    <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src='/bower_components/dragula.js/dist/dragula.min.js'></script>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row" id="workspace">
+            <div class="col-md-2">
+                <div class="panel panel-info">
+                    <div class="panel-heading">标题</div>
+                    <div id="divLeft" class="panel-body">
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <div class="ctrl" style="background:#eee">A</div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="ctrl" style="background:#eee">B</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div id="divRight" class="row">
+                    <div class="dragula-container col-md-12" style="border:1px solid blue; min-height:30px"></div>
+                    <div class="dragula-container col-md-12" style="border:1px solid blue; min-height:30px"></div>
+                </div>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+</body>
+
+</html>
+<script>
+    $(function(){
+        var drake = dragula([], {
+            isContainer: function (el) {
+                return $(el).hasClass('dragula-container');
+            }, moves: function (el, source, handle, sibling) {
+                return $(el).hasClass('ctrl'); // elements are always draggable by default
+            },
+            accepts: function (el, target, source, sibling) {
+                return $(el).hasClass('ctrl') && $(target).children('.cls-instance').length == 0; // elements can be dropped in any of the `containers` by default
+            },
+            invalid: function (el, handle) {
+                return false; // don't prevent any drags from initiating by default
+            },
+            //direction: 'vertical',             // Y axis is considered when determining where an element would be dropped
+            copy: function (el, source) {
+                return !$(el).hasClass("cls-instance");
+            },                       // elements are moved by default, not copied
+            //copySortSource: false,             // elements in copy-source containers can be reordered
+            //revertOnSpill: false,              // spilling will put the element back where it was dragged from, if this is true
+            //removeOnSpill: false,              // spilling will `.remove` the element, if this is true
+            //mirrorContainer: document.body,    // set the element that gets mirror elements appended
+            //ignoreInputTextSelection: true     // allows users to select input text, see details below
+        });
+        drake.on('drop', function (el) {
+            $(el).addClass("cls-instance");
+        });
+        
+        $('#divLeft li.list-group-item').each(function(i, o){
+             drake.containers.push(o);
+        });
+        $('#divRight .dragula-container').each(function(i, o){
+            drake.containers.push(o);
+        });
+    });
+
+</script>
