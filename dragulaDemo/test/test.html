@@ -18,11 +18,11 @@
         <div class="row" id="workspace">
             <div class="col-md-2">
                 <div class="panel panel-info">
-                    <div class="panel-heading">标题</div>
+                    <div class="panel-heading">控件</div>
                     <div id="divLeft" class="panel-body">
                         <ul class="list-group">
                             <li class="list-group-item">
-                                <div class="ctrl" style="background:#eee">A</div>
+                                <div class="ctrl ctrl-input-text">文本框</div>
                             </li>
                             <li class="list-group-item">
                                 <div class="ctrl" style="background:#eee">B</div>
@@ -32,9 +32,17 @@
                 </div>
             </div>
             <div class="col-md-8">
-                <div id="divRight" class="row">
-                    <div class="dragula-container col-md-12" style="border:1px solid blue; min-height:30px"></div>
-                    <div class="dragula-container col-md-12" style="border:1px solid blue; min-height:30px"></div>
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <form>
+                            <fieldset>
+                                <div>
+                                    <legend>表单名</legend>
+                                </div>
+                            </fieldset>
+                            <button type="submit" class="btn btn-default">Submit</button>
+                        </form>
+                    </div>
                 </div>
             </div>
             <div class="col-md-2"></div>
@@ -47,12 +55,12 @@
     $(function(){
         var drake = dragula([], {
             isContainer: function (el) {
-                return $(el).hasClass('dragula-container');
+                return $(el).is('form');
             }, moves: function (el, source, handle, sibling) {
                 return $(el).hasClass('ctrl'); // elements are always draggable by default
             },
             accepts: function (el, target, source, sibling) {
-                return $(el).hasClass('ctrl') && $(target).children('.cls-instance').length == 0; // elements can be dropped in any of the `containers` by default
+                return $(el).hasClass('ctrl'); //&& $(target).children('.cls-instance').length == 0; // elements can be dropped in any of the `containers` by default
             },
             invalid: function (el, handle) {
                 return false; // don't prevent any drags from initiating by default
@@ -67,15 +75,19 @@
             //mirrorContainer: document.body,    // set the element that gets mirror elements appended
             //ignoreInputTextSelection: true     // allows users to select input text, see details below
         });
-        drake.on('drop', function (el) {
-            $(el).addClass("cls-instance");
+        drake.on('drop', function (el, target) {
+            if($(el).hasClass("ctrl-input-text")) {
+                var h = '<div class="form-group ctrl ctrl-input-text cls-instance">';
+                h += '<label for="exampleInputEmail1">Email address</label>';
+                h += '<input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">'
+                h += '</div>';
+                $(el).replaceWith(h);
+                return;
+            }
         });
         
         $('#divLeft li.list-group-item').each(function(i, o){
              drake.containers.push(o);
-        });
-        $('#divRight .dragula-container').each(function(i, o){
-            drake.containers.push(o);
         });
     });
 
