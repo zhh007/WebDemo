@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <title>Document</title>
+    <title>demo by dragula</title>
     <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="/bower_components/dragula.js/dist/dragula.min.css">
     <script src="/bower_components/jquery/dist/jquery.min.js"></script>
@@ -19,13 +19,10 @@
             <div class="col-md-2">
                 <div class="panel panel-info">
                     <div class="panel-heading">控件</div>
-                    <div id="divLeft" class="panel-body">
+                    <div class="panel-body">
                         <ul class="list-group">
                             <li class="list-group-item">
                                 <div class="ctrl ctrl-input-text">文本框</div>
-                            </li>
-                            <li class="list-group-item">
-                                <div class="ctrl" style="background:#eee">B</div>
                             </li>
                         </ul>
                     </div>
@@ -86,7 +83,7 @@
             }
         });
         
-        $('#divLeft li.list-group-item').each(function(i, o){
+        $('li.list-group-item').each(function(i, o){
              drake.containers.push(o);
         });
     });
