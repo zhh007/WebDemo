@@ -12,10 +12,49 @@
     <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src='/bower_components/dragula.js/dist/dragula.min.js'></script>
     <style>
-        #toolbox .panel-heading{padding:5px 15px}
-        #toolbox .panel td {height: 20px; line-height: 20px; padding: 4px; text-indent: 10px; cursor:pointer}
-        #toolprop .panel-heading{padding:5px 15px}
-        #toolprop .panel td {height: 20px; line-height: 20px; padding: 4px; text-indent: 10px;}
+        #toolbox .panel-heading {
+            padding: 5px 15px
+        }
+        
+        #toolbox .panel td {
+            height: 20px;
+            line-height: 20px;
+            padding: 4px;
+            text-indent: 10px;
+            cursor: pointer
+        }
+        
+        #toolprop .panel-heading {
+            padding: 5px 15px
+        }
+        
+        #toolprop .panel td {
+            height: 20px;
+            line-height: 20px;
+            padding: 2px 5px;
+            font-size: 12px
+        }
+        
+        #toolprop .input-sm {
+            height: 20px;
+            line-height: 20px;
+            padding: 0 5px
+        }
+        
+        #toolprop select {
+            height: 20px;
+            line-height: 20px;
+            padding: 0;
+            font-size: 12px
+        }
+        
+        #toolprop td.propctrl {
+            padding: 2px
+        }
+        
+        .help-block {
+            margin: 0px;
+        }
     </style>
 </head>
 
@@ -27,39 +66,57 @@
                     <div class="panel-heading">基本控件</div>
                     <table class="table">
                         <tr>
-                            <td class="ctrlbox"><div class="ctrl ctrl-input-text">文本框</div></td>
+                            <td class="ctrlbox">
+                                <div class="ctrl ctrl-input-text">文本框</div>
+                            </td>
                         </tr>
                         <tr>
-                            <td class="ctrlbox"><div class="ctrl ctrl-input-text">文本框</div></td>
+                            <td class="ctrlbox">
+                                <div class="ctrl ctrl-input-text">文本框</div>
+                            </td>
                         </tr>
                     </table>
                 </div>
             </div>
-            <div class="col-md-6" style="padding:0">
+            <div class="col-md-7" style="padding:0">
                 <div class="panel panel-default">
                     <div class="panel-body">
-                        <form>
+                        <form class="form-horizontal" onsubmit="return false;">
                             <fieldset>
                                 <div>
                                     <legend>表单名</legend>
                                 </div>
                             </fieldset>
-                            <button type="submit" class="btn btn-default">Submit</button>
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <button type="submit" class="btn btn-primary">提交</button>
+                                    <button type="submit" class="btn btn-default">取消</button>
+                                </div>
+                            </div>
                         </form>
+                    </div>
+                    <div class="panel-footer">
+                        <button type="button" class="btn btn-success">生成代码</button>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4" id="toolprop">
+            <div class="col-md-3" id="toolprop">
                 <div class="panel panel-default">
                     <div class="panel-heading">属性</div>
-                    <table class="table table-condensed table-bordered">
+                    <table class="table table-condensed">
                         <tr>
-                            <td class="info">文本框</td>
-                            <td><input type="text" /></td>
+                            <td class="info col-sm-4">文本框测试啊是事实啊</td>
+                            <td class="col-sm-8 propctrl"><input type="text" class="form-control input-sm" /></td>
                         </tr>
                         <tr>
                             <td class="info">文本框</td>
-                            <td><input type="text" /></td>
+                            <td class="propctrl">
+                                <select class="form-control select-sm">
+                                    <option>请选择</option>
+                                    <option>选项一</option>
+                                    <option>选项二</option>
+                                </select>
+                            </td>
                         </tr>
                     </table>
                 </div>
@@ -96,8 +153,12 @@
         drake.on('drop', function (el, target) {
             if($(el).hasClass("ctrl-input-text")) {
                 var h = '<div class="form-group ctrl ctrl-input-text cls-instance">';
-                h += '<label for="exampleInputEmail1">Email address</label>';
-                h += '<input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">'
+                h += '<label for="exampleInputEmail1" class="col-sm-2 control-label">Email address</label>';
+                h += ' <div class="col-sm-10">';
+                h += '<input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">';
+                h += '<span id="helpBlock" class="help-block">A block of help text that breaks onto a new line and may extend beyond one line.</span>';
+
+                h += ' </div>'
                 h += '</div>';
                 $(el).replaceWith(h);
                 return;
