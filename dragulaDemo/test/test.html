@@ -54,6 +54,8 @@
         
         .help-block {
             margin: 0px;
+            font-size: 12px;
+            padding:5px 5px 0 5px;
         }
     </style>
 </head>
@@ -153,10 +155,10 @@
         drake.on('drop', function (el, target) {
             if($(el).hasClass("ctrl-input-text")) {
                 var h = '<div class="form-group ctrl ctrl-input-text cls-instance">';
-                h += '<label for="exampleInputEmail1" class="col-sm-2 control-label">Email address</label>';
+                h += '<label for="field1" class="col-sm-2 control-label">文本</label>';
                 h += ' <div class="col-sm-10">';
-                h += '<input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">';
-                h += '<span id="helpBlock" class="help-block">A block of help text that breaks onto a new line and may extend beyond one line.</span>';
+                h += '<input type="text" class="form-control" id="field1" placeholder="请输入文本">';
+                h += '<span class="help-block">帮助信息或错误提示</span>';
 
                 h += ' </div>'
                 h += '</div>';
