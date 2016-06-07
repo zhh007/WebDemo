@@ -70,6 +70,7 @@ define([
                 var otr = $('<tr></tr>').append(otd1).append(otd2);
                 $('#propTable').append(otr);
 
+                oinput.val(that.model.get('labeltext'));
                 oinput.on("change", function () {
                     that.model.set({ 'labeltext': this.value });
                 });
