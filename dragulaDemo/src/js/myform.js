@@ -91,13 +91,13 @@ define([
          mouseEvent.pageX < (this.$build.width() + this.$build.position().left) &&
          mouseEvent.pageY >= this.$build.position().top &&
          mouseEvent.pageY < (this.$build.height() + this.$build.position().top)) {
-        var index = $(".target").index();
+        var index = $(".target").index();//debugger;
         $(".target").removeClass("target");
         //debugger;
-        this.collection.add(control,{at: index+1});
+        this.collection.add(control.model,{at: index+1});
       } else {
         $(".target").removeClass("target");
-        this.collection.add(control);
+        this.collection.add(control.model);
       }
     }
   })

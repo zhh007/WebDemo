@@ -26,11 +26,11 @@ define([
                     this.counter[snippetType] += 1;
                 }
 
-                ctrl.setField("id", snippetType + "-" + this.counter[snippetType]);
+                ctrl.set("id", snippetType + "-" + this.counter[snippetType]);
 
-                if (typeof ctrl.get("fields")["id2"] !== "undefined") {
-                    ctrl.setField("id2", snippetType + "2-" + this.counter[snippetType]);
-                }
+                // if (typeof ctrl.get("fields")["id2"] !== "undefined") {
+                //     ctrl.set("id2", snippetType + "2-" + this.counter[snippetType]);
+                // }
             }
             , renderAll: function () {
                 return this.map(function (ctrl) {
