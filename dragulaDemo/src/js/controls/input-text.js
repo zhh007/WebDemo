@@ -71,9 +71,12 @@ define([
                 $('#propTable').append(otr);
 
                 oinput.val(that.model.get('labeltext'));
-                oinput.on("change", function () {
+                oinput.on("keyup", function () {
                     that.model.set({ 'labeltext': this.value });
                 });
+
+
+                
             }
         });
     });
