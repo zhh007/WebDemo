@@ -5,7 +5,7 @@ define([
       //, "text!templates/app/renderform.html"
 ], function(
   $, _, Backbone
-  , TempSnippetView
+  , TempToolItem
   , PubSub
   //, _renderForm 
 ){
@@ -16,7 +16,7 @@ define([
       this.collection.on("add", this.render, this);
       this.collection.on("remove", this.render, this);
       this.collection.on("change", this.render, this);
-      //PubSub.on("mySnippetDrag", this.handleSnippetDrag, this);
+      PubSub.on("ControlDrag", this.handleSnippetDrag, this);
       PubSub.on("tempMove", this.handleTempMove, this);
       PubSub.on("tempDrop", this.handleTempDrop, this);
       this.$build = $("#mainform");
@@ -65,11 +65,11 @@ define([
       }
     }
 
-    // , handleSnippetDrag: function(mouseEvent, snippetModel) {
-    //   $("body").append(new TempSnippetView({model: snippetModel}).render());
-    //   this.collection.remove(snippetModel);
-    //   PubSub.trigger("newTempPostRender", mouseEvent);
-    // }
+    , handleSnippetDrag: function(mouseEvent, ctrl) {//debugger;
+      $("body").append(new TempToolItem({control: ctrl}).render());
+      this.collection.remove(ctrl.model);
+      PubSub.trigger("newTempPostRender", mouseEvent);
+    }
 
     , handleTempMove: function(mouseEvent){
       $(".target").removeClass("target");
@@ -97,6 +97,7 @@ define([
         this.collection.add(control,{at: index+1});
       } else {
         $(".target").removeClass("target");
+        this.collection.add(control);
       }
     }
   })
