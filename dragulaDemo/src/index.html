@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>demo</title>
+    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/bower_components/dragula.js/dist/dragula.min.css">
+    <style>
+        #toolbox .panel-heading {
+            padding: 5px 15px
+        }
+        
+        #toolbox .panel td {
+            height: 20px;
+            line-height: 20px;
+            padding: 4px;
+            text-indent: 10px;
+            cursor: pointer
+        }
+        
+        #toolprop .panel-heading {
+            padding: 5px 15px
+        }
+        
+        #toolprop .panel td {
+            height: 20px;
+            line-height: 20px;
+            padding: 2px 5px;
+            font-size: 12px
+        }
+        
+        #toolprop .input-sm {
+            height: 20px;
+            line-height: 20px;
+            padding: 0 5px
+        }
+        
+        #toolprop select {
+            height: 20px;
+            line-height: 20px;
+            padding: 0;
+            font-size: 12px
+        }
+        
+        #toolprop td.propctrl {
+            padding: 2px
+        }
+        
+        .help-block {
+            margin: 0px;
+            font-size: 12px;
+            padding: 5px 5px 0 5px;
+        }
+        
+        .temp {
+            width: 500px;
+            border: 1px dashed #999;
+            background: #eee
+        }
+        
+        .target:after {
+            float: left;
+            content: " ";
+            /*height: 77px;*/
+            margin-top: 3px;
+            background: #f0f0f0;
+            width: 100%;
+            border: 1px dashed #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row" id="workspace">
+            <div class="col-md-2" id="toolbox">
+                <!--<div class="panel panel-default">
+                    <div class="panel-heading">基本控件</div>
+                    <table class="table">
+                        <tr>
+                            <td class="ctrlbox">
+                                <div class="ctrl ctrl-input-text">文本框</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="ctrlbox">
+                                <div class="ctrl ctrl-input-text">文本框</div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>-->
+            </div>
+            <div class="col-md-7" style="padding:0">
+                <div class="panel panel-default">
+                    <div class="panel-body" id="mainform" style="min-height:100px">
+                        <!--<form class="form-horizontal" onsubmit="return false;">
+                            <fieldset>
+                                <div>
+                                    <legend>表单名</legend>
+                                </div>
+                            </fieldset>
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <button type="submit" class="btn btn-primary">提交</button>
+                                    <button type="submit" class="btn btn-default">取消</button>
+                                </div>
+                            </div>
+                        </form>-->
+                    </div>
+                    <div class="panel-footer">
+                        <button type="button" class="btn btn-success">生成代码</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3" id="toolprop">
+                <div class="panel panel-default">
+                    <div class="panel-heading">属性</div>
+                    <table class="table table-condensed">
+                        <tr>
+                            <td class="info col-sm-4">文本框测试啊是事实啊</td>
+                            <td class="col-sm-8 propctrl"><input type="text" class="form-control input-sm" /></td>
+                        </tr>
+                        <tr>
+                            <td class="info">文本框</td>
+                            <td class="propctrl">
+                                <select class="form-control select-sm">
+                                    <option>请选择</option>
+                                    <option>选项一</option>
+                                    <option>选项二</option>
+                                </select>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+<script data-main="js/main.js" src="../bower_components/requirejs/require.js"></script>
