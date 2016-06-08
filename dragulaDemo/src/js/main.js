@@ -11,7 +11,20 @@ require.config({
         'bootstrap': {
             deps: ['jquery']//,
             //exports: '$.fn.popover'
+        },
+        shCore: {
+            deps: ['XRegExp']
+        },
+        shXml: {
+            deps: ['shCore']
+        },
+        // shCss: {
+        //     deps: ['shCore']
+        // },
+        shJs: {
+            deps: ['shCore']
         }
+        
     }
     , paths: {
         jquery: '../../bower_components/jquery/dist/jquery.min',
@@ -23,7 +36,12 @@ require.config({
         templates: "./js/templates",
         controls: "./js/controls",
         models: "./js/models",
-        codegen: "./js/codegen"
+        codegen: "./js/codegen",
+        XRegExp: '../../bower_components/SyntaxHighlighter/scripts/XRegExp',
+        shCore: '../../bower_components/SyntaxHighlighter/scripts/shCore',
+        shXml:             '../../bower_components/SyntaxHighlighter/scripts/shBrushXml',
+        //shCss:             '../../bower_components/SyntaxHighlighter/scripts/shBrushCss',
+        shJs:              '../../bower_components/SyntaxHighlighter/scripts/shBrushJScript'
     }
 });
 require(['app/app'], function (app) {

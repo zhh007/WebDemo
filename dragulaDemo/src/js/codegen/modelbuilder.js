@@ -1,9 +1,13 @@
 define([
        'jquery', 'underscore', 'backbone'
-], function($, _, Backbone) {
+       , 'text!templates/model.html'
+], function(
+  $, _, Backbone
+  , modeltemp
+) {
   return {
     build:function(form){
-        return '<div>abc</div>';
+        return modeltemp;
     }
   }
 });
