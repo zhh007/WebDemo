@@ -61,22 +61,18 @@ define([
                 propbox.empty().off();
                 propbox.html(that.template_props(that.model.attributes));
 
-                $(".prop-id", propbox).val(that.model.id);
                 propbox.on("keyup", ".prop-id", function (e) {
                     that.model.set({ 'id': $(e.target).val() });
                 });
 
-                $(".prop-labeltext", propbox).val(that.model.labeltext);
                 propbox.on("keyup", ".prop-labeltext", function (e) {
                     that.model.set({ 'labeltext': $(e.target).val() });
                 });
 
-                $(".prop-placeholder", propbox).val(that.model.placeholder);
                 propbox.on("keyup", ".prop-placeholder", function (e) {
                     that.model.set({ 'placeholder': $(e.target).val() });
                 });
 
-                $(".prop-help", propbox).val(that.model.help);
                 propbox.on("keyup", ".prop-help", function (e) {
                     that.model.set({ 'help': $(e.target).val() });
                 });
