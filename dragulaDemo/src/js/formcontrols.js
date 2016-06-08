@@ -27,7 +27,7 @@ define([
                 }
 
                 ctrl.set("id", snippetType + "-" + this.counter[snippetType]);
-
+                ctrl.set("labeltext", ctrl.get("labeltext") + (this.counter[snippetType] + 1));
                 // if (typeof ctrl.get("fields")["id2"] !== "undefined") {
                 //     ctrl.set("id2", snippetType + "2-" + this.counter[snippetType]);
                 // }

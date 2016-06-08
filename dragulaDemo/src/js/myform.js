@@ -33,7 +33,7 @@ define([
 
       var html = '<fieldset><div><legend>表单名</legend></div></fieldset>';
       that.$el.append(html);
-      
+
       _.each(this.collection.renderAll(), function(snippet){
         that.$el.append(snippet.render());
       });
@@ -49,7 +49,7 @@ define([
         //console.log('getBottomAbove');
       var myFormBits = $(this.$el.find(".ctrl"));
       var topelement = _.find(myFormBits, function(renderedSnippet) {
-        if (($(renderedSnippet).position().top + $(renderedSnippet).height()) > eventY  - $(renderedSnippet).height()/2 ) {
+        if (($(renderedSnippet).position().top + $(renderedSnippet).height()) > eventY ) {
           return true;
         }
         else {
@@ -77,14 +77,23 @@ define([
 
     , handleTempMove: function(mouseEvent){
       $(".target").removeClass("target");
+      $(".target-first").removeClass("target-first");
       if(mouseEvent.pageX >= this.$build.position().left &&
           mouseEvent.pageX < (this.$build.width() + this.$build.position().left) &&
           mouseEvent.pageY >= this.$build.position().top &&
           mouseEvent.pageY < (this.$build.height() + this.$build.position().top)){
             var t = $(this.getBottomAbove(mouseEvent.pageY));
             var index = t.index();
-            //console.log("index: " + index);
-        t.addClass("target");
+            if(index == 1){
+              var firstCtrl = $(this.$el.find(".ctrl")[0]);
+              if(mouseEvent.pageY < firstCtrl.position().top){
+                t.addClass("target-first");
+              } else {
+                t.addClass("target");
+              }
+            }else{
+              t.addClass("target");
+            }
       } else {
         $(".target").removeClass("target");
       }
@@ -95,12 +104,17 @@ define([
          mouseEvent.pageX < (this.$build.width() + this.$build.position().left) &&
          mouseEvent.pageY >= this.$build.position().top &&
          mouseEvent.pageY < (this.$build.height() + this.$build.position().top)) {
-        var index = $(".target").index();//debugger;
-        $(".target").removeClass("target");
-        //debugger;
-        this.collection.add(control.model,{at: index+1});
+           if($(".target-first").length == 1){
+              $(".target-first").removeClass("target-first");
+              this.collection.add(control.model,{at: 0});
+           } else{
+              var index = $(".target").index();
+              $(".target").removeClass("target");
+              this.collection.add(control.model,{at: index});
+           }
       } else {
         $(".target").removeClass("target");
+        $(".target-first").removeClass("target-first");
         this.collection.add(control.model);
       }
     }
