@@ -22,7 +22,8 @@ require.config({
         app: "./js",
         templates: "./js/templates",
         controls: "./js/controls",
-        models: "./js/models"
+        models: "./js/models",
+        codegen: "./js/codegen"
     }
 });
 require(['app/app'], function (app) {
