@@ -9,7 +9,6 @@ define([
             defaults: {
                 control: 'input-text',
                 id: '',
-                name: '',
                 labeltext: '文本',
                 placeholder: '',
                 help: ''

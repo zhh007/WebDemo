@@ -1,10 +1,10 @@
 define([
     "jquery", "underscore", "backbone"
-    , "text!templates/input-text.html"
+    , "text!templates/input-text.html", "text!templates/input-text-props.html"
     , "app/pubsub"
 ], function (
     $, _, Backbone
-    , _template
+    , _template, _template_props
     , PubSub
 ) {
         return Backbone.View.extend({
@@ -12,6 +12,7 @@ define([
             , className: "form-group ctrl ctrl-input-text cls-instance"
             , initialize: function () {
                 this.template = _.template(_template);
+                this.template_props = _.template(_template_props);
                 if (this.model) {
                     this.model.on('change', this.render, this);
                     console.log(this.model);
@@ -19,7 +20,6 @@ define([
             }
             , render: function () {
                 var that = this;
-                //debugger;
                 return this.$el.html(
                     that.template(this.model.attributes)
                 );
@@ -32,11 +32,7 @@ define([
                 mouseDownEvent.preventDefault();
                 var that = this;
                 that.showPropEdit();
-                //popover
-                //$(".popover").remove();
-                //this.$el.popover("show");
-                //$(".popover #save").on("click", this.saveHandler(that));
-                //$(".popover #cancel").on("click", this.cancelHandler(that));
+
                 //add drag event for all but form name
                 //if (this.model.get("title") !== "Form Name") {
                 $("body").on("mousemove", function (mouseMoveEvent) {
@@ -44,8 +40,6 @@ define([
                         Math.abs(mouseDownEvent.pageX - mouseMoveEvent.pageX) > 10 ||
                         Math.abs(mouseDownEvent.pageY - mouseMoveEvent.pageY) > 10
                     ) {
-                        //that.$el.popover('destroy');
-                        //debugger;
                         PubSub.trigger("ControlDrag", mouseDownEvent, that);
                         that.mouseUpHandler();
                     };
@@ -63,20 +57,47 @@ define([
             }
             , showPropEdit: function () {
                 var that = this;
-                $('#propTable').empty();
-                var oinput = $('<input type="text" class="form-control input-sm" />');
-                var otd1 = $('<td class="info col-sm-4">label text</td>');
-                var otd2 = $('<td class="col-sm-8 propctrl"></td>').append(oinput);
-                var otr = $('<tr></tr>').append(otd1).append(otd2);
-                $('#propTable').append(otr);
+                var propbox = $('#propTable');
+                propbox.empty().off();
+                propbox.html(that.template_props(that.model.attributes));
 
-                oinput.val(that.model.get('labeltext'));
-                oinput.on("keyup", function () {
-                    that.model.set({ 'labeltext': this.value });
+                $(".prop-id", propbox).val(that.model.id);
+                propbox.on("keyup", ".prop-id", function (e) {
+                    that.model.set({ 'id': $(e.target).val() });
                 });
 
+                $(".prop-labeltext", propbox).val(that.model.labeltext);
+                propbox.on("keyup", ".prop-labeltext", function (e) {
+                    that.model.set({ 'labeltext': $(e.target).val() });
+                });
 
-                
+                $(".prop-placeholder", propbox).val(that.model.placeholder);
+                propbox.on("keyup", ".prop-placeholder", function (e) {
+                    that.model.set({ 'placeholder': $(e.target).val() });
+                });
+
+                $(".prop-help", propbox).val(that.model.help);
+                propbox.on("keyup", ".prop-help", function (e) {
+                    that.model.set({ 'help': $(e.target).val() });
+                });
+                // propbox.on({
+                //     "keyup .prop-id": function (e) {
+                //         that.model.set({ 'id': $(e.originalEvent.target).val() });
+                //     },
+                //     "keyup .prop-name": function (e) {
+                //         that.model.set({ 'name': $(e.originalEvent.target).val() });
+                //     },
+                //     "keyup .prop-labeltext": function (e) {
+                //         that.model.set({ 'labeltext': $(e.originalEvent.target).val() });
+                //     },
+                //     "keyup .prop-placeholder": function (e) {
+                //         that.model.set({ 'placeholder': $(e.originalEvent.target).val() });
+                //     },
+                //     "keyup .prop-help": function (e) {
+                //         that.model.set({ 'help': $(e.originalEvent.target).val() });
+                //     }
+                // });
+
             }
         });
     });
