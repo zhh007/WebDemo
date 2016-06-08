@@ -15,7 +15,7 @@ define([
                 this.template_props = _.template(_template_props);
                 if (this.model) {
                     this.model.on('change', this.render, this);
-                    console.log(this.model);
+                    //console.log(this.model);
                 }
             }
             , render: function () {
