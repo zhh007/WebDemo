@@ -30,6 +30,10 @@ define([
       var that = this;
       //var containsFile = false;
       //debugger;
+
+      var html = '<fieldset><div><legend>表单名</legend></div></fieldset>';
+      that.$el.append(html);
+      
       _.each(this.collection.renderAll(), function(snippet){
         that.$el.append(snippet.render());
       });
