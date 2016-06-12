@@ -1,7 +1,7 @@
 define([
     "jquery", "underscore", "backbone", "bootstrap", "shCore", "shJs", "shXml"
     , "app/toolbox", "app/myform"
-    , "app/formcontrols"
+    , "controls/formcontrols"
     , "codegen/modelbuilder"
     , "text!templates/codedialog.html"
 ], function (
