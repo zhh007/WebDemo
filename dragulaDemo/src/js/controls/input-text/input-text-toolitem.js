@@ -1,6 +1,6 @@
 define([
     "jquery", "underscore", "backbone"
-    , "app/pubsub", "controls/temp-toolitem"
+    , "help/pubsub", "controls/temp-toolitem"
     , "controls/input-text/input-text-model", "controls/input-text/input-text"
 ], function (
     $, _, Backbone

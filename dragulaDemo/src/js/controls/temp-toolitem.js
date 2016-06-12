@@ -1,6 +1,6 @@
 define([
     "jquery"
-    , "app/pubsub"
+    , "help/pubsub"
 ], function (
     $
     , PubSub

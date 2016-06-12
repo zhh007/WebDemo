@@ -1,7 +1,7 @@
 define([
     "jquery", "underscore", "backbone"
     , "text!controls/input-text/input-text-temp.html", "text!controls/input-text/input-text-temp-props.html"
-    , "app/pubsub"
+    , "help/pubsub"
 ], function (
     $, _, Backbone
     , _template, _template_props

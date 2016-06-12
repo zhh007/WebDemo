@@ -38,6 +38,7 @@ require.config({
         //shCss:             '../../bower_components/SyntaxHighlighter/scripts/shBrushCss',
         shJs:              '../../bower_components/SyntaxHighlighter/scripts/shBrushJScript',
         app: "./js",
+        help: "./js/help",
         templates: "./js/templates",
         controls: "./js/controls",
         codegen: "./js/codegen"

@@ -1,7 +1,7 @@
 define([
        "jquery", "underscore", "backbone"
       , "controls/temp-toolitem"
-      , "app/pubsub"
+      , "help/pubsub"
       //, "text!templates/app/renderform.html"
 ], function(
   $, _, Backbone
