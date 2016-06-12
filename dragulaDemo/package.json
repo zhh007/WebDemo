@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "dragula demo",
   "main": "index.js",
-  "dependencies": {},
   "devDependencies": {
     "gulp": "^3.9.1",
+    "gulp-batch": "^1.0.5",
     "gulp-connect": "^4.0.0"
   },
   "scripts": {
