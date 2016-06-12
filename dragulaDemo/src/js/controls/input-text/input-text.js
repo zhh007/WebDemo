@@ -1,6 +1,6 @@
 define([
     "jquery", "underscore", "backbone"
-    , "text!templates/input-text.html", "text!templates/input-text-props.html"
+    , "text!controls/input-text/input-text-temp.html", "text!controls/input-text/input-text-temp-props.html"
     , "app/pubsub"
 ], function (
     $, _, Backbone

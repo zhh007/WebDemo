@@ -1,6 +1,6 @@
 define([
     'jquery', 'underscore', 'backbone'
-    , "controls/input-text-toolitem"
+    , "controls/input-text/input-text-toolitem"
 ], function ($, _, Backbone, inputText) {
     return Backbone.View.extend({
         tagName: "div"

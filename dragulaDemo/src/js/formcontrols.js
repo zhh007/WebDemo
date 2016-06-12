@@ -1,11 +1,11 @@
 define([
     "jquery", "underscore", "backbone"
-    , "models/base"
-    , "controls/input-text"
+    , "controls/base"
+    , "controls/allcontrols"
 ], function (
     $, _, Backbone
     , ModelBase
-    , ctrlText
+    , allCtrls
 ) {
         return Backbone.Collection.extend({
             model: ModelBase
@@ -33,14 +33,11 @@ define([
                 // }
             }
             , renderAll: function () {
-                return this.map(function (ctrl) {
-                    //debugger;
-                    switch (ctrl.control) {
-                        case "input-text":
-                            return new ctrlText({ model: ctrl });
-                            //break;
+                return this.map(function (ctrlmodel) {
+                    var ctrl = allCtrls['input-text'];
+                    if(ctrl){
+                        return new ctrl({ model: ctrlmodel });
                     }
-                    //return ctrl.render();
                 });
             }
         });

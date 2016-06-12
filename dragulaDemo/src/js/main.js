@@ -32,16 +32,15 @@ require.config({
         backbone: '../../bower_components/backbone/backbone-min',
         bootstrap: '../../bower_components/bootstrap/dist/js/bootstrap.min',
         text: '../../bower_components/text/text',             //用于requirejs导入html类型的依赖
-        app: "./js",
-        templates: "./js/templates",
-        controls: "./js/controls",
-        models: "./js/models",
-        codegen: "./js/codegen",
         XRegExp: '../../bower_components/SyntaxHighlighter/scripts/XRegExp',
         shCore: '../../bower_components/SyntaxHighlighter/scripts/shCore',
         shXml:             '../../bower_components/SyntaxHighlighter/scripts/shBrushXml',
         //shCss:             '../../bower_components/SyntaxHighlighter/scripts/shBrushCss',
-        shJs:              '../../bower_components/SyntaxHighlighter/scripts/shBrushJScript'
+        shJs:              '../../bower_components/SyntaxHighlighter/scripts/shBrushJScript',
+        app: "./js",
+        templates: "./js/templates",
+        controls: "./js/controls",
+        codegen: "./js/codegen"
     }
 });
 require(['app/app'], function (app) {
