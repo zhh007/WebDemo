@@ -20,6 +20,7 @@ define([
         PubSub.on("ControlDrag", this.handleControlDrag, this);
         PubSub.on("ToolboxItemMove", this.handleToolboxItemMove, this);
         PubSub.on("ToolboxItemDrop", this.handleToolboxItemDrop, this);
+        PubSub.on("ControlSelected", this.handleControlSelected, this);
 
         this.collection = this.model.get('ctrls');
         this.model.on('change', this.handlerModelChange, this);
@@ -60,6 +61,10 @@ define([
 
       , showPropEdit: function () {
         var that = this;
+
+        $(".ctrl-selected").removeClass("ctrl-selected");
+        this.$el.addClass("ctrl-selected");
+
         var propbox = $('#propTable');
         propbox.empty().off();
         propbox.html(that.template_props(that.model.attributes));
@@ -152,5 +157,14 @@ define([
           this.collection.add(control.model);
         }
       }
+      , handleControlSelected: function(control){
+        $(".ctrl-selected").removeClass("ctrl-selected");
+        this.collection.each(function (o, i, list) {
+          o.selected = false;
+        });
+        control.model.selected = true;
+        control.$el.addClass("ctrl-selected");
+      }
+      
     })
   });

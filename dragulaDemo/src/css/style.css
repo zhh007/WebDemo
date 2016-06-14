@@ -47,6 +47,10 @@
     background: #eee
 }
 
+.temp .ctrl-selected {
+    border:none
+}
+
 /*拖拽目标*/
 .target:after {
     float: left;
@@ -79,4 +83,8 @@
     border-top: 0;
     border-top-left-radius: 0;
     border-top-right-radius: 0
+}
+
+.ctrl-selected {
+    border:1px dashed #ff0000
 }

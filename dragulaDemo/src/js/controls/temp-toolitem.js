@@ -42,6 +42,7 @@ define([
                 // Make sure the element has been drawn and
                 // has height in the dom before triggering.
                 //console.log("toolboxitem");
+
                 PubSub.trigger("ToolboxItemMove", mouseEvent);
             }
             , mouseMoveHandler: function (mouseEvent) {

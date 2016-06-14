@@ -11,6 +11,7 @@ define([
             help: ''
             , initialize: function () {
                 this.handlerInit = true;
+                this.selected = false;
             }
         });
     });
