@@ -16,9 +16,9 @@ define([
       this.collection.on("add", this.render, this);
       this.collection.on("remove", this.render, this);
       this.collection.on("change", this.render, this);
-      PubSub.on("ControlDrag", this.handleSnippetDrag, this);
-      PubSub.on("tempMove", this.handleTempMove, this);
-      PubSub.on("tempDrop", this.handleTempDrop, this);
+      PubSub.on("ControlDrag", this.handleControlDrag, this);
+      PubSub.on("ToolboxItemMove", this.handleToolboxItemMove, this);
+      PubSub.on("ToolboxItemDrop", this.handleToolboxItemDrop, this);
       this.$build = $("#mainform");
       //this.renderForm = _.template(_renderForm);
       this.render();
@@ -69,13 +69,14 @@ define([
       }
     }
 
-    , handleSnippetDrag: function(mouseEvent, ctrl) {//debugger;
+    , handleControlDrag: function(mouseEvent, ctrl) {//debugger;
+      //创建移动中的临时控件
       $("body").append(new TempToolItem({control: ctrl}).render());
       this.collection.remove(ctrl.model);
-      PubSub.trigger("newTempPostRender", mouseEvent);
+      PubSub.trigger("NewTempControlMove", mouseEvent);
     }
 
-    , handleTempMove: function(mouseEvent){
+    , handleToolboxItemMove: function(mouseEvent){
       $(".target").removeClass("target");
       $(".target-first").removeClass("target-first");
       if(mouseEvent.pageX >= this.$build.position().left &&
@@ -99,7 +100,7 @@ define([
       }
     }
 
-    , handleTempDrop: function(mouseEvent, control, index){
+    , handleToolboxItemDrop: function(mouseEvent, control, index){
       if(mouseEvent.pageX >= this.$build.position().left &&
          mouseEvent.pageX < (this.$build.width() + this.$build.position().left) &&
          mouseEvent.pageY >= this.$build.position().top &&

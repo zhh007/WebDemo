@@ -1,0 +1,82 @@
+/*工具箱*/
+#toolbox .panel-heading {
+    padding: 5px 15px
+}
+
+#toolbox .panel td {
+    height: 20px;
+    line-height: 20px;
+    padding: 4px;
+    text-indent: 10px;
+    cursor: pointer
+}
+
+/*控件属性*/
+#toolprop .panel-heading {
+    padding: 5px 15px
+}
+
+#toolprop .panel td {
+    height: 20px;
+    line-height: 20px;
+    padding: 2px 5px;
+    font-size: 12px
+}
+
+#toolprop .input-sm {
+    height: 20px;
+    line-height: 20px;
+    padding: 0 5px
+}
+
+#toolprop select {
+    height: 20px;
+    line-height: 20px;
+    padding: 0;
+    font-size: 12px
+}
+
+#toolprop td.propctrl {
+    padding: 2px
+}
+
+/*拖拽的临时控件*/
+.temp {
+    width: 500px;
+    border: 1px dashed #999;
+    background: #eee
+}
+
+/*拖拽目标*/
+.target:after {
+    float: left;
+    content: " ";
+    height: 30px;
+    margin-top: 3px;
+    background: #f0f0f0;
+    width: 100%;
+    border: 1px dashed #ccc;
+}
+
+.target-first::before {
+    float: left;
+    content: " ";
+    height: 30px;
+    margin-top: 3px;
+    background: #f0f0f0;
+    width: 100%;
+    border: 1px dashed #ccc;
+}
+
+/*表单*/
+.help-block {
+    margin: 0px;
+    font-size: 12px;
+    padding: 5px 5px 0 5px;
+}
+
+.tab-pane-panel {
+    border-top: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0
+}

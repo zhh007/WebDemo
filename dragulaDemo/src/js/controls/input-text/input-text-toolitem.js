@@ -22,9 +22,10 @@ define([
             , mouseDownHandler: function (mouseDownEvent) {
                 mouseDownEvent.preventDefault();
                 mouseDownEvent.stopPropagation();
+                //创建移动中的临时控件
                 var ctrl = new Control({ model: new Model() });
                 $("body").append(new TempToolItem({ control: ctrl }).render());
-                PubSub.trigger("newTempPostRender", mouseDownEvent);
+                PubSub.trigger("NewTempControlMove", mouseDownEvent);
             }
         });
     });

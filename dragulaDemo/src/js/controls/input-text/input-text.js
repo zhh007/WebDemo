@@ -33,7 +33,7 @@ define([
                 var that = this;
                 that.showPropEdit();
 
-                //add drag event for all but form name
+                //表单控件移动
                 //if (this.model.get("title") !== "Form Name") {
                 $("body").on("mousemove", function (mouseMoveEvent) {
                     if (
