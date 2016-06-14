@@ -14,7 +14,7 @@ define([
                 help: ''
             }
             , initialize: function () {
-                this.set("fresh", true);
+                this.handlerInit = true;
             }
         });
     });

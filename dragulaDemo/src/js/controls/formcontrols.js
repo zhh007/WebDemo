@@ -14,23 +14,20 @@ define([
                 this.on("add", this.giveUniqueId);
             }
             , giveUniqueId: function (ctrl) {
-                if (!ctrl.get("fresh")) {
+                if(!ctrl.handlerInit){
                     return;
                 }
-                ctrl.set("fresh", false);
-                var snippetType = ctrl.control;
+                ctrl.handlerInit = false;
+                var ctrlType = ctrl.control;
 
-                if (typeof this.counter[snippetType] === "undefined") {
-                    this.counter[snippetType] = 0;
+                if (typeof this.counter[ctrlType] === "undefined") {
+                    this.counter[ctrlType] = 0;
                 } else {
-                    this.counter[snippetType] += 1;
+                    this.counter[ctrlType] += 1;
                 }
 
-                ctrl.set("id", snippetType + "-" + this.counter[snippetType]);
-                ctrl.set("labeltext", ctrl.get("labeltext") + (this.counter[snippetType] + 1));
-                // if (typeof ctrl.get("fields")["id2"] !== "undefined") {
-                //     ctrl.set("id2", snippetType + "2-" + this.counter[snippetType]);
-                // }
+                ctrl.set("id", ctrlType + "-" + this.counter[ctrlType]);
+                ctrl.set("labeltext", ctrl.get("labeltext") + (this.counter[ctrlType] + 1));
             }
             , renderAll: function () {
                 return this.map(function (ctrlmodel) {
