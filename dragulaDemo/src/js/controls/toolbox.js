@@ -6,9 +6,6 @@ define([
         tagName: "div"
         , className: "panel panel-default"
         , initialize: function () {
-            //   this.id = this.options.title.toLowerCase().replace(/\W/g,'');
-            //   this.tabNavTemplate = _.template(_tabNavTemplate);
-            //   this.render();
             this.collection = [new inputText()];
             this.render();
         }

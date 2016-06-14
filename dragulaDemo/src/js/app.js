@@ -1,6 +1,6 @@
 define([
     "jquery", "underscore", "backbone", "bootstrap", "shCore", "shJs", "shXml"
-    , "app/toolbox", "controls/eform/eform", "controls/eform/eform-model"
+    , "controls/toolbox", "controls/eform/eform", "controls/eform/eform-model"
     , "controls/formcontrols"
     , "codegen/modelbuilder"
     , "text!templates/codedialog.html"
@@ -13,11 +13,11 @@ define([
 ) {
         return {
             initialize: function () {
-                new ToolBox();//{el: $("#toolbox")}
+                new ToolBox();
                 var formmodel = new EFormModel();
                 formmodel.set('ctrls', new FormControls());
                 var form = new EForm({model: formmodel});
-                //debugger;
+
                 var codetemp = _.template(codedialog);
                 $('.btn-build').click(function() {
                     var brush = new SyntaxHighlighter.brushes.Xml();
