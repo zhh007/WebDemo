@@ -1,13 +1,9 @@
 define([
     "jquery", "underscore", "backbone"
-    //, "controls/temp-toolitem"
-    //, "help/pubsub"
-    //, "text!controls/eform/eform-temp.html", "text!controls/eform/eform-temp-props.html"
+    , "prettyJson"
 ], function (
     $, _, Backbone
-    , TempToolItem
-    , PubSub
-    , _template, _template_props
+    , prettyJson
 ) {
         return Backbone.View.extend({
             tagName: "div"
@@ -24,9 +20,16 @@ define([
             , render: function () {
                 var that = this;
                 this.$el.empty();
+                var jsonstr = JSON.stringify(this.model);
+                var json = eval('(' + jsonstr + ')');
+                //this.$el.append(JSON.stringify(this.model));
 
-                this.$el.append(JSON.stringify(this.model));
-                //this.$el.append(JSON.stringify(this.collection));
+var node = new prettyJson.view.Node({
+  el:this.$el,
+  data:json
+});
+node.expandAll();
+
                 this.$el.appendTo("#mainformJSON");
             }
         })

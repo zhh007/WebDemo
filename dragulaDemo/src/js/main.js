@@ -23,8 +23,11 @@ require.config({
         // },
         shJs: {
             deps: ['shCore']
+        },
+        prettyJson:{
+            deps:['jquery', 'underscore', 'backbone' ],
+            exports: 'PrettyJSON'
         }
-        
     }
     , paths: {
         jquery: '../../bower_components/jquery/dist/jquery.min',
@@ -34,9 +37,10 @@ require.config({
         text: '../../bower_components/text/text',             //用于requirejs导入html类型的依赖
         XRegExp: '../../bower_components/SyntaxHighlighter/scripts/XRegExp',
         shCore: '../../bower_components/SyntaxHighlighter/scripts/shCore',
-        shXml:             '../../bower_components/SyntaxHighlighter/scripts/shBrushXml',
+        shXml: '../../bower_components/SyntaxHighlighter/scripts/shBrushXml',
         //shCss:             '../../bower_components/SyntaxHighlighter/scripts/shBrushCss',
-        shJs:              '../../bower_components/SyntaxHighlighter/scripts/shBrushJScript',
+        shJs: '../../bower_components/SyntaxHighlighter/scripts/shBrushJScript',
+        prettyJson: '../src/assets/pretty-json/pretty-json-min',
         app: "./js",
         help: "./js/help",
         templates: "./js/templates",
