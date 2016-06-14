@@ -1,9 +1,11 @@
 define(
   [
+    "controls/eform/eform",
     "controls/input-text/input-text",
   ],
   function () {
     return {
-      "input-text": arguments[0],
+      "eform": arguments[0],
+      "input-text": arguments[1],
     }
   });

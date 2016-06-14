@@ -1,12 +1,12 @@
 define([
     "jquery", "underscore", "backbone", "bootstrap", "shCore", "shJs", "shXml"
-    , "app/toolbox", "app/myform", "app/myform-model"
+    , "app/toolbox", "controls/eform/eform", "controls/eform/eform-model"
     , "controls/formcontrols"
     , "codegen/modelbuilder"
     , "text!templates/codedialog.html"
 ], function (
     $, _, Backbone, bootstrap, shCore, shJs, shXml
-    , ToolBox, MyForm, MyFormModel
+    , ToolBox, EForm, EFormModel
     , FormControls
     , modelgen
     , codedialog
@@ -14,8 +14,8 @@ define([
         return {
             initialize: function () {
                 new ToolBox();//{el: $("#toolbox")}
-                var formmodel = new MyFormModel();
-                var form = new MyForm({model: formmodel, collection: new FormControls()});
+                var formmodel = new EFormModel();
+                var form = new EForm({model: formmodel, collection: new FormControls()});
                 //debugger;
                 var codetemp = _.template(codedialog);
                 $('.btn-build').click(function() {

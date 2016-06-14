@@ -28,7 +28,6 @@ define([
 
             that.$el.append($table);
 
-            //$("#toolbox").append(h);
             this.$el.appendTo("#toolbox");
         }
     });

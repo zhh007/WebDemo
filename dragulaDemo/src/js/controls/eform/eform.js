@@ -2,7 +2,7 @@ define([
   "jquery", "underscore", "backbone"
   , "controls/temp-toolitem"
   , "help/pubsub"
-  , "text!app/myform-temp.html", "text!app/myform-temp-props.html"
+  , "text!controls/eform/eform-temp.html", "text!controls/eform/eform-temp-props.html"
 ], function (
   $, _, Backbone
   , TempToolItem
