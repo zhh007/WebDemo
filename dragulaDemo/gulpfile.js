@@ -25,7 +25,8 @@ function string_src(filename, string) {
 gulp.task('allcontrols', function() {
    var folders = getFolders(controlsPath);
 
-   var txt = "define(\r\n";
+   var txt = "//自动生成文件，请不要修改。\r\n";
+   txt += "define(\r\n";
    txt += "  [\r\n";
    for (var k in folders){
      txt += '    "controls/'+ folders[k] + '/' + folders[k] + '",\r\n';
