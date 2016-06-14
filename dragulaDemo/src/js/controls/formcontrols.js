@@ -1,6 +1,6 @@
 define([
     "jquery", "underscore", "backbone"
-    , "controls/base"
+    , "controls/controlmodelbase"
     , "controls/allcontrols"
 ], function (
     $, _, Backbone

@@ -9,5 +9,8 @@ define([
             labeltext: '文本',
             placeholder: '',
             help: ''
+            , initialize: function () {
+                this.handlerInit = true;
+            }
         });
     });

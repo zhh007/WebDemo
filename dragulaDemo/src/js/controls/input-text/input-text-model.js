@@ -1,6 +1,6 @@
 define([
     "jquery", "underscore", "backbone"
-    , "controls/base"
+    , "controls/controlmodelbase"
 ], function (
     $, _, Backbone
     , Base
@@ -12,9 +12,6 @@ define([
                 labeltext: '文本',
                 placeholder: '',
                 help: ''
-            }
-            , initialize: function () {
-                this.handlerInit = true;
-            }
+            }            
         });
     });
