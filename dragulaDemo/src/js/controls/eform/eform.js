@@ -62,7 +62,7 @@ define([
       , showPropEdit: function () {
         var that = this;
 
-        $(".ctrl-selected").removeClass("ctrl-selected");
+        this.clearAllSelected();
         this.$el.addClass("ctrl-selected");
 
         var propbox = $('#propTable');
@@ -157,14 +157,17 @@ define([
           this.collection.add(control.model);
         }
       }
-      , handleControlSelected: function(control){
+      , handleControlSelected: function (control) {
+        this.clearAllSelected();
+        control.model.selected = true;
+        control.$el.addClass("ctrl-selected");
+      }
+      , clearAllSelected: function () {
         $(".ctrl-selected").removeClass("ctrl-selected");
         this.collection.each(function (o, i, list) {
           o.selected = false;
         });
-        control.model.selected = true;
-        control.$el.addClass("ctrl-selected");
       }
-      
+
     })
   });

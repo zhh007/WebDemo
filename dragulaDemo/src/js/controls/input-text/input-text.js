@@ -21,8 +21,9 @@ define([
             , render: function () {
                 var that = this;
                 if(this.model.selected) {
-                    $("ctrl-selected").removeClass("ctrl-selected");
+                    $(".ctrl-selected").removeClass("ctrl-selected");
                     this.$el.addClass("ctrl-selected");
+                    this.showPropEdit();
                 }
                 return this.$el.html(
                     that.template(this.model.attributes)
