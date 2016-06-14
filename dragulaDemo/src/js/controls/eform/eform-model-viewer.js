@@ -7,7 +7,6 @@ define([
 ) {
         return Backbone.View.extend({
             tagName: "div"
-            //, className: "form-horizontal"
             , initialize: function () {
                 this.collection = this.model.get('ctrls');
                 this.model.on('change', this.render, this);
@@ -22,13 +21,12 @@ define([
                 this.$el.empty();
                 var jsonstr = JSON.stringify(this.model);
                 var json = eval('(' + jsonstr + ')');
-                //this.$el.append(JSON.stringify(this.model));
 
-var node = new prettyJson.view.Node({
-  el:this.$el,
-  data:json
-});
-node.expandAll();
+                var node = new prettyJson.view.Node({
+                    el: this.$el,
+                    data: json
+                });
+                node.expandAll();
 
                 this.$el.appendTo("#mainformJSON");
             }
