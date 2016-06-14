@@ -9,7 +9,7 @@ define([
             defaults: {
                 id: 'form1',
                 title: '表单名称',
-                entityname: '',
+                entityname: ''
             }
         });
     });

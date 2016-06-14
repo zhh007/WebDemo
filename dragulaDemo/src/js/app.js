@@ -15,7 +15,8 @@ define([
             initialize: function () {
                 new ToolBox();//{el: $("#toolbox")}
                 var formmodel = new EFormModel();
-                var form = new EForm({model: formmodel, collection: new FormControls()});
+                formmodel.set('ctrls', new FormControls());
+                var form = new EForm({model: formmodel});
                 //debugger;
                 var codetemp = _.template(codedialog);
                 $('.btn-build').click(function() {

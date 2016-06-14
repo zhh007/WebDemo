@@ -3,11 +3,13 @@ define([
   , "controls/temp-toolitem"
   , "help/pubsub"
   , "text!controls/eform/eform-temp.html", "text!controls/eform/eform-temp-props.html"
+  , "controls/eform/eform-model-viewer"
 ], function (
   $, _, Backbone
   , TempToolItem
   , PubSub
-  , _template, _template_props 
+  , _template, _template_props
+  , EFormModelViewer
 ) {
     return Backbone.View.extend({
       tagName: "form"
@@ -15,22 +17,22 @@ define([
       , initialize: function () {
         this.template = _.template(_template);
         this.template_props = _.template(_template_props);
-        this.collection.on("add", this.render, this);
-        this.collection.on("remove", this.render, this);
-        this.collection.on("change", this.render, this);
         PubSub.on("ControlDrag", this.handleControlDrag, this);
         PubSub.on("ToolboxItemMove", this.handleToolboxItemMove, this);
         PubSub.on("ToolboxItemDrop", this.handleToolboxItemDrop, this);
 
-        if (this.model) {
-          this.model.on('change', this.handlerModelChange, this);
-          //console.log(this.model);
-        }
+        this.collection = this.model.get('ctrls');
+        this.model.on('change', this.handlerModelChange, this);
+        this.collection.on("add", this.render, this);
+        this.collection.on("remove", this.render, this);
+        this.collection.on("change", this.render, this);
 
         this.$build = $("#mainform");
-        //this.renderForm = _.template(_renderForm);
+
         this.render();
         this.showPropEdit();
+
+        this.viewer = new EFormModelViewer({ model: this.model });
       }
       , events: {
         "click .formtitle": "showPropEdit"
@@ -38,7 +40,7 @@ define([
       , render: function () {
         var that = this;
         this.$el.empty();
-        
+
         that.$el.append(that.template(that.model.attributes));
 
         _.each(this.collection.renderAll(), function (snippet) {
