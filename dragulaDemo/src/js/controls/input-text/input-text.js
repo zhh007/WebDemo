@@ -37,7 +37,7 @@ define([
                 mouseDownEvent.preventDefault();
                 var that = this;
                 that.showPropEdit();
-                console.log("input-text show prop edit.");
+                //console.log("input-text show prop edit.");
                 //表单控件移动
                 //if (this.model.get("title") !== "Form Name") {
                 $("body").on("mousemove", function (mouseMoveEvent) {

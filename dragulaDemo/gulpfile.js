@@ -40,7 +40,7 @@ gulp.task('allcontrols', function() {
    txt += "    }\r\n";
    txt += "  });\r\n";
 
-  console.log('allcontrols doing!');
+  //console.log('allcontrols doing!');
   return string_src("allcontrols.js", txt)
       .pipe(gulp.dest('src/js/controls/'))
 });
