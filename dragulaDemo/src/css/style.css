@@ -53,7 +53,6 @@
 
 /*拖拽目标*/
 .target:after {
-    float: left;
     content: " ";
     height: 30px;
     margin-top: 3px;
@@ -63,7 +62,6 @@
 }
 
 .target-first::before {
-    float: left;
     content: " ";
     height: 30px;
     margin-top: 3px;

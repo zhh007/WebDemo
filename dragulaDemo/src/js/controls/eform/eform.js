@@ -15,8 +15,6 @@ define([
       tagName: "form"
       , className: "form-horizontal"
       , initialize: function () {
-        //this.template = _.template(_template);
-        //this.template_props = _.template(_template_props);
         PubSub.on("ControlDrag", this.handleControlDrag, this);
         PubSub.on("ToolboxItemMove", this.handleToolboxItemMove, this);
         PubSub.on("ToolboxItemDrop", this.handleToolboxItemDrop, this);
@@ -47,10 +45,7 @@ define([
         _.each(this.collection.renderAll(), function (snippet) {
           that.$el.append(snippet.render());
         });
-        //   $("#render").val(that.renderForm({
-        //     multipart: this.collection.containsFileType(),
-        //     text: _.map(this.collection.renderAllClean(), function(e){return e.html()}).join("\n")
-        //   }));
+
         this.$el.appendTo("#mainform");
         this.delegateEvents();
       }
@@ -84,31 +79,28 @@ define([
       }
 
       , getBottomAbove: function (eventY) {
-        var myFormBits = $(this.$el.find(".ctrl"));
-        var topelement = _.find(myFormBits, function (renderedSnippet) {
-          var top = $(renderedSnippet).offset().top;
-          var h = $(renderedSnippet).height();
+        var ctrls = $(this.$el.find(".ctrl"));
+        var topelement = _.find(ctrls, function (o) {
+          var ctrl = $(o);
+          var top = ctrl.offset().top;
+          var h = ctrl.height();
           if (top > eventY || (top < eventY && top + h > eventY)) {
             return true;
-          }
-          else {
+          } else {
             return false;
           }
         });
-        //console.log(myFormBits);
-        //console.log(topelement);
         if (topelement) {
-          //console.log("topelement is true");
           return topelement;
         } else {
-          if (myFormBits.length == 0) {
+          if (ctrls.length == 0) {
             return this.$build;
           }
-          return myFormBits[myFormBits.length - 1];
+          return ctrls[ctrls.length - 1];
         }
       }
 
-      , handleControlDrag: function (mouseEvent, ctrl) {//debugger;
+      , handleControlDrag: function (mouseEvent, ctrl) {
         //创建移动中的临时控件
         $("body").append(new TempToolItem({ control: ctrl }).render());
         this.collection.remove(ctrl.model);
@@ -138,10 +130,10 @@ define([
       }
 
       , handleToolboxItemDrop: function (mouseEvent, control, index) {
-        if (mouseEvent.pageX >= this.$build.position().left &&
-          mouseEvent.pageX < (this.$build.width() + this.$build.position().left) &&
-          mouseEvent.pageY >= this.$build.position().top &&
-          mouseEvent.pageY < (this.$build.height() + this.$build.position().top)) {
+        if (mouseEvent.pageX >= this.$build.offset().left &&
+          mouseEvent.pageX < (this.$build.width() + this.$build.offset().left) &&
+          mouseEvent.pageY >= this.$build.offset().top &&
+          mouseEvent.pageY < (this.$build.height() + this.$build.offset().top)) {
           if ($(".target-first").length == 1) {
             $(".target-first").removeClass("target-first");
             this.collection.add(control.model, { at: 0 });
@@ -149,12 +141,6 @@ define([
             var index = $(".target").index();
             $(".target").removeClass("target");
             this.collection.add(control.model, { at: index });
-          }
-        } else {
-          if ($(".target").length == 1) {
-            $(".target").removeClass("target");
-            $(".target-first").removeClass("target-first");
-            this.collection.add(control.model);
           }
         }
       }
