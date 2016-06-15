@@ -1,2 +1,2 @@
-/*TMODJS:{"version":2,"md5":"3046661dbf556210d1ad09642547848c"}*/
+/*TMODJS:{"version":3,"md5":"3046661dbf556210d1ad09642547848c"}*/
 define(["../template",""],function(a){return a("codegen/model","<div>abc</div>\r\n<div>abc</div>\r\n<div>abc</div>\r\n<div>abc</div>\r\n<div>abc</div>")});

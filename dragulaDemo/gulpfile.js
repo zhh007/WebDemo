@@ -48,8 +48,9 @@ gulp.task('allcontrols', function () {
 
 //创建watch任务去检测html文件,其定义了当html改动之后，去调用一个Gulp的Task
 gulp.task('watch', function () {
-  //gulp.watch(['./*.html', './src/*.html', './test/*.html'], ['html']);
-  gulp.watch(['**/*.js'], ['js', 'allcontrols']);
+  gulp.watch(['./*.html', './src/*.html', './test/*.html'], ['html']);
+  gulp.watch(['./src/js/controls/**/*.js'], ['allcontrols', 'js']);
+  gulp.watch(['**/*.js'], ['js']);
   // gulp.watch('**/*.js', batch(function (events, done) {
   //       gulp.start('allcontrols', done);
   //   }));
