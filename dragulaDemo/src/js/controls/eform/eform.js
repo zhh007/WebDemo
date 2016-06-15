@@ -84,10 +84,11 @@ define([
       }
 
       , getBottomAbove: function (eventY) {
-        //console.log('getBottomAbove');
         var myFormBits = $(this.$el.find(".ctrl"));
         var topelement = _.find(myFormBits, function (renderedSnippet) {
-          if (($(renderedSnippet).position().top + $(renderedSnippet).height()) > eventY) {
+          var top = $(renderedSnippet).offset().top;
+          var h = $(renderedSnippet).height();
+          if (top > eventY || (top < eventY && top + h > eventY)) {
             return true;
           }
           else {
@@ -103,7 +104,7 @@ define([
           if (myFormBits.length == 0) {
             return this.$build;
           }
-          return myFormBits[0];
+          return myFormBits[myFormBits.length - 1];
         }
       }
 
@@ -117,15 +118,15 @@ define([
       , handleToolboxItemMove: function (mouseEvent) {
         $(".target").removeClass("target");
         $(".target-first").removeClass("target-first");
-        if (mouseEvent.pageX >= this.$build.position().left &&
-          mouseEvent.pageX < (this.$build.width() + this.$build.position().left) &&
-          mouseEvent.pageY >= this.$build.position().top &&
-          mouseEvent.pageY < (this.$build.height() + this.$build.position().top)) {
+        if (mouseEvent.pageX >= this.$build.offset().left &&
+          mouseEvent.pageX < (this.$build.width() + this.$build.offset().left) &&
+          mouseEvent.pageY >= this.$build.offset().top &&
+          mouseEvent.pageY < (this.$build.height() + this.$build.offset().top)) {
           var t = $(this.getBottomAbove(mouseEvent.pageY));
           var index = t.index();
           if (index == 1) {
             var firstCtrl = $(this.$el.find(".ctrl")[0]);
-            if (mouseEvent.pageY < firstCtrl.position().top) {
+            if (mouseEvent.pageY < firstCtrl.offset().top) {
               t.addClass("target-first");
             } else {
               t.addClass("target");
@@ -133,8 +134,6 @@ define([
           } else {
             t.addClass("target");
           }
-        } else {
-          $(".target").removeClass("target");
         }
       }
 
@@ -152,9 +151,11 @@ define([
             this.collection.add(control.model, { at: index });
           }
         } else {
-          $(".target").removeClass("target");
-          $(".target-first").removeClass("target-first");
-          this.collection.add(control.model);
+          if ($(".target").length == 1) {
+            $(".target").removeClass("target");
+            $(".target-first").removeClass("target-first");
+            this.collection.add(control.model);
+          }
         }
       }
       , handleControlSelected: function (control) {
