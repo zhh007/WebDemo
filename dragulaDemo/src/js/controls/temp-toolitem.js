@@ -21,8 +21,8 @@ define([
             }
             , handleNewTempControlMove: function (mouseEvent) {
                 this.tempForm = this.$el.find(".ctrl").parent()[0];
-                this.halfHeight = Math.floor(this.tempForm.clientHeight / 2);
-                this.halfWidth = Math.floor(this.tempForm.clientWidth / 2);
+                this.halfHeight = Math.floor($(this.tempForm).height() / 2);
+                this.halfWidth = Math.floor($(this.tempForm).width() / 2);
                 this.centerOnEvent(mouseEvent);
             }
             , centerOnEvent: function (mouseEvent) {
