@@ -1,0 +1,2 @@
+/*TMODJS:{"version":2,"md5":"83ccc2efdce4328bffdc7acd2b7d622c"}*/
+define(["../template",""],function(a){return a("controls/eform-temp",function(a){"use strict";var b=this,c=(b.$helpers,b.$escape),d=a.title,e="";return e+='<fieldset>\r\n    <div>\r\n        <legend class="formtitle">',e+=c(d),e+="</legend>\r\n    </div>\r\n</fieldset>",new String(e)})});

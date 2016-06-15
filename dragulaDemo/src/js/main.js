@@ -43,7 +43,7 @@ require.config({
         prettyJson: '../src/assets/pretty-json/pretty-json-min',
         app: "./js",
         help: "./js/help",
-        templates: "./js/templates",
+        templates: "../src/js/tpl",
         controls: "./js/controls",
         codegen: "./js/codegen"
     }

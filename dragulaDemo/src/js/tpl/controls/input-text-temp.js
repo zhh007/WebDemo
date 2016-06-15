@@ -1,0 +1,2 @@
+/*TMODJS:{"version":2,"md5":"f7524e0298f3496276c5b503f967ac78"}*/
+define(["../template",""],function(a){return a("controls/input-text-temp",function(a){"use strict";var b=this,c=(b.$helpers,b.$escape),d=a.labeltext,e=a.id,f=a.placeholder,g=a.help,h="";return h+='<label for="field1" class="col-sm-2 control-label">',h+=c(d),h+='</label>\r\n<div class="col-sm-10">\r\n    <input type="text" class="form-control" id="',h+=c(e),h+='" name="',h+=c(e),h+='" placeholder="',h+=c(f),h+='">\r\n    <span class="help-block">',h+=c(g),h+="</span>\r\n</div>",new String(h)})});

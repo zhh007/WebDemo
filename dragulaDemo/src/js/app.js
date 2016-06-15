@@ -3,7 +3,7 @@ define([
     , "controls/toolbox", "controls/eform/eform", "controls/eform/eform-model"
     , "controls/formcontrols"
     , "codegen/modelbuilder"
-    , "text!templates/codedialog.html"
+    , "templates/codegen/codedialog"
 ], function (
     $, _, Backbone, bootstrap, shCore, shJs, shXml
     , ToolBox, EForm, EFormModel
@@ -18,7 +18,6 @@ define([
                 formmodel.set('ctrls', new FormControls());
                 var form = new EForm({model: formmodel});
 
-                var codetemp = _.template(codedialog);
                 $('.btn-build').click(function() {
                     var brush = new SyntaxHighlighter.brushes.Xml();
                     brush.init({ toolbar: false, 'quick-code': true });
@@ -26,7 +25,7 @@ define([
                     var code = modelgen.build(form);
                     var codediv = brush.getDiv(code);
 
-                    var allhtml = codetemp({});
+                    var allhtml = codedialog({});
                     var dlg = $(allhtml);
                     $(document.body).append(dlg);
                     $('#divModel').append(codediv);

@@ -1,6 +1,6 @@
 define([
     "jquery", "underscore", "backbone"
-    , "text!controls/input-text/input-text-temp.html", "text!controls/input-text/input-text-temp-props.html"
+    , "templates/controls/input-text-temp", "templates/controls/input-text-temp-props"
     , "help/pubsub"
 ], function (
     $, _, Backbone
@@ -11,8 +11,8 @@ define([
             tagName: "div"
             , className: "form-group ctrl ctrl-input-text cls-instance"
             , initialize: function () {
-                this.template = _.template(_template);
-                this.template_props = _.template(_template_props);
+                //this.template = _.template(_template);
+                //this.template_props = _.template(_template_props);
                 if (this.model) {
                     this.model.on('change', this.render, this);
                     //console.log(this.model);
@@ -26,7 +26,8 @@ define([
                     this.showPropEdit();
                 }
                 return this.$el.html(
-                    that.template(this.model.attributes)
+                    _template(this.model.attributes)
+                    //that.template(this.model.attributes)
                 );
             }, events: {
                 "click": "preventPropagation" //stops checkbox / radio reacting.
@@ -66,7 +67,8 @@ define([
 
                 var propbox = $('#propTable');
                 propbox.empty().off();
-                propbox.html(that.template_props(that.model.attributes));
+                //propbox.html(that.template_props(that.model.attributes));
+                propbox.html(_template_props(that.model.attributes));
 
                 propbox.on("keyup", ".prop-id", function (e) {
                     that.model.set({ 'id': $(e.target).val() });

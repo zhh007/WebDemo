@@ -2,7 +2,7 @@ define([
   "jquery", "underscore", "backbone"
   , "controls/temp-toolitem"
   , "help/pubsub"
-  , "text!controls/eform/eform-temp.html", "text!controls/eform/eform-temp-props.html"
+  , "templates/controls/eform-temp", "templates/controls/eform-temp-props"
   , "controls/eform/eform-model-viewer"
 ], function (
   $, _, Backbone
@@ -15,8 +15,8 @@ define([
       tagName: "form"
       , className: "form-horizontal"
       , initialize: function () {
-        this.template = _.template(_template);
-        this.template_props = _.template(_template_props);
+        //this.template = _.template(_template);
+        //this.template_props = _.template(_template_props);
         PubSub.on("ControlDrag", this.handleControlDrag, this);
         PubSub.on("ToolboxItemMove", this.handleToolboxItemMove, this);
         PubSub.on("ToolboxItemDrop", this.handleToolboxItemDrop, this);
@@ -42,7 +42,7 @@ define([
         var that = this;
         this.$el.empty();
 
-        that.$el.append(that.template(that.model.attributes));
+        that.$el.append(_template(that.model.attributes));
 
         _.each(this.collection.renderAll(), function (snippet) {
           that.$el.append(snippet.render());
@@ -67,7 +67,7 @@ define([
 
         var propbox = $('#propTable');
         propbox.empty().off();
-        propbox.html(that.template_props(that.model.attributes));
+        propbox.html(_template_props(that.model.attributes));
 
         propbox.on("keyup", ".prop-id", function (e) {
           that.model.set({ 'id': $(e.target).val() });
