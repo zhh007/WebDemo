@@ -11,11 +11,8 @@ define([
             tagName: "div"
             , className: "form-group ctrl ctrl-input-text cls-instance"
             , initialize: function () {
-                //this.template = _.template(_template);
-                //this.template_props = _.template(_template_props);
                 if (this.model) {
                     this.model.on('change', this.render, this);
-                    //console.log(this.model);
                 }
             }
             , render: function () {
@@ -23,11 +20,9 @@ define([
                 if(this.model.selected) {
                     $(".ctrl-selected").removeClass("ctrl-selected");
                     this.$el.addClass("ctrl-selected");
-                    this.showPropEdit();
                 }
                 return this.$el.html(
                     _template(this.model.attributes)
-                    //that.template(this.model.attributes)
                 );
             }, events: {
                 "click": "preventPropagation" //stops checkbox / radio reacting.
@@ -38,7 +33,7 @@ define([
                 mouseDownEvent.preventDefault();
                 var that = this;
                 that.showPropEdit();
-                //console.log("input-text show prop edit.");
+
                 //表单控件移动
                 //if (this.model.get("title") !== "Form Name") {
                 $("body").on("mousemove", function (mouseMoveEvent) {
@@ -67,7 +62,6 @@ define([
 
                 var propbox = $('#propTable');
                 propbox.empty().off();
-                //propbox.html(that.template_props(that.model.attributes));
                 propbox.html(_template_props(that.model.attributes));
 
                 propbox.on("keyup", ".prop-id", function (e) {
