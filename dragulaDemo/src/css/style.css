@@ -51,6 +51,10 @@
     border:none
 }
 
+.temp .row {
+    min-height: 50px
+}
+
 /*拖拽目标*/
 .target:after {
     content: " ";
@@ -85,4 +89,8 @@
 
 .ctrl-selected {
     border:1px dashed #ff0000
+}
+
+#mainform .row {
+    min-height: 40px
 }

@@ -27,11 +27,14 @@ define([
                 }
 
                 ctrl.set("id", ctrlType + "-" + this.counter[ctrlType]);
-                ctrl.set("labeltext", ctrl.get("labeltext") + (this.counter[ctrlType] + 1));
+                if(ctrl.get("control") != 'row'){
+                    ctrl.set("labeltext", ctrl.get("labeltext") + (this.counter[ctrlType] + 1));
+                }
             }
             , renderAll: function () {
                 return this.map(function (ctrlmodel) {
-                    var ctrl = allCtrls['input-text'];
+                    var ctrltype = ctrlmodel.get("control");
+                    var ctrl = allCtrls[ctrltype];
                     if(ctrl){
                         return new ctrl({ model: ctrlmodel });
                     }

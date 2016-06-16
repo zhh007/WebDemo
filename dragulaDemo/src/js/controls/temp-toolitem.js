@@ -20,18 +20,14 @@ define([
                 return this.$el.html(this.control.render());
             }
             , handleNewTempControlMove: function (mouseEvent) {
-                this.tempForm = this.$el.find(".ctrl").parent()[0];
-                this.halfHeight = Math.floor($(this.tempForm).height() / 2);
-                this.halfWidth = Math.floor($(this.tempForm).width() / 2);
+                this.halfHeight = Math.floor($(this.$el).height() / 2);
+                this.halfWidth = Math.floor($(this.$el).width() / 2);
                 this.centerOnEvent(mouseEvent);
             }
             , centerOnEvent: function (mouseEvent) {
                 var mouseX = mouseEvent.pageX;
                 var mouseY = mouseEvent.pageY;
-                this.tempForm.style.position = 'absolute';
-                this.tempForm.style.top = (mouseY - this.halfHeight) + "px";
-                this.tempForm.style.left = (mouseX - 20) + "px";
-
+                this.$el.css({position: 'absolute', top: (mouseY - this.halfHeight) + "px", left: (mouseX - 20) + "px"});
                 PubSub.trigger("ToolboxItemMove", mouseEvent);
             }
             , mouseMoveHandler: function (mouseEvent) {
