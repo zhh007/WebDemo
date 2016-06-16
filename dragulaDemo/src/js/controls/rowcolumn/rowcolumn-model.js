@@ -10,6 +10,9 @@ define([
                 control: 'rowcolumn',
                 classname: 'col-md-6',
                 ctrl: null
-            }            
+            }     
+            , initialize: function () {
+
+            }       
         });
     });
