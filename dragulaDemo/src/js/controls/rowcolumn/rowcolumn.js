@@ -73,7 +73,8 @@ define([
                 $("body").off("mousemove");
             }
 
-            , handleToolboxItemMove: function (mouseEvent) {
+            , handleToolboxItemMove: function (mouseEvent, control) {
+                if(control.$el.hasClass("ctrl-row")) return;
                 if (this.model.get("ctrl") != null) return;
                 if (mouseEvent.pageX >= this.$el.offset().left &&
                     mouseEvent.pageX < (this.$el.width() + this.$el.offset().left) &&
@@ -85,7 +86,7 @@ define([
                 }
             }
 
-            , handleToolboxItemDrop: function (mouseEvent, control, index) {
+            , handleToolboxItemDrop: function (mouseEvent, control) {
                 if (mouseEvent.pageX >= this.$el.offset().left &&
                     mouseEvent.pageX < (this.$el.width() + this.$el.offset().left) &&
                     mouseEvent.pageY >= this.$el.offset().top &&

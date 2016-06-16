@@ -108,7 +108,7 @@ define([
         PubSub.trigger("NewTempControlMove", mouseEvent);
       }
 
-      , handleToolboxItemMove: function (mouseEvent) {
+      , handleToolboxItemMove: function (mouseEvent, control) {
         $(".target").removeClass("target");
         $(".target-first").removeClass("target-first");
         if (mouseEvent.pageX >= this.$build.offset().left &&
@@ -130,7 +130,7 @@ define([
         }
       }
 
-      , handleToolboxItemDrop: function (mouseEvent, control, index) {
+      , handleToolboxItemDrop: function (mouseEvent, control) {
         if ($(".target").hasClass("ctrl-rowcolumn")) {
           return;
         }
