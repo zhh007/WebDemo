@@ -15,8 +15,7 @@ define([
                     this.model.on('change', this.render, this);
                     this.columns = this.model.get("columns");
                     if (this.columns.length == 0) {
-                        this.columns.push(new columnModel());
-                        this.columns.push(new columnModel());
+                        this.model.set("columns", [new columnModel(), new columnModel()]);
                     }
                 }
             }
