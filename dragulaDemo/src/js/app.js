@@ -5,6 +5,7 @@ define([
     , "codegen/modelbuilder"
     , "templates/codegen/codedialog"
     , "controls/allcontrols"
+    , "controls/eform/eform-model-viewer"
 ], function (
     $, _, Backbone, bootstrap, shCore, shJs, shXml
     , ToolBox, EForm, EFormModel
@@ -12,17 +13,22 @@ define([
     , modelgen
     , codedialog
     , allCtrls
+    , EFormModelViewer
 ) {
         return {
             initialize: function () {
                 new ToolBox();
                 var formmodel = new EFormModel();
                 formmodel.set('ctrls', new FormControls());
-                var form = new EForm({model: formmodel});
+                var form = new EForm({ model: formmodel });
 
                 window._allCtrls = allCtrls;
 
-                $('.btn-build').click(function() {
+                $('#btn_profile').on('shown.bs.tab', function (e) {
+                    var viewer = new EFormModelViewer({ model: formmodel });
+                })
+
+                $('.btn-build').click(function () {
                     var brush = new SyntaxHighlighter.brushes.Xml();
                     brush.init({ toolbar: false, 'quick-code': true });
 
@@ -43,4 +49,4 @@ define([
                 });
             }
         }
-});
+    });

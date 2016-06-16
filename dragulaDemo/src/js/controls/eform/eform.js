@@ -3,13 +3,11 @@ define([
   , "controls/temp-toolitem"
   , "help/pubsub"
   , "templates/controls/eform-temp", "templates/controls/eform-temp-props"
-  , "controls/eform/eform-model-viewer"
 ], function (
   $, _, Backbone
   , TempToolItem
   , PubSub
   , _template, _template_props
-  , EFormModelViewer
 ) {
     return Backbone.View.extend({
       tagName: "form"
@@ -30,8 +28,6 @@ define([
 
         this.render();
         this.showPropEdit();
-
-        this.viewer = new EFormModelViewer({ model: this.model });
       }
       , events: {
         "click .formtitle": "showPropEdit"

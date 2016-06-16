@@ -27,7 +27,7 @@ define([
                     data: json
                 });
                 node.expandAll();
-
+                $("#mainformJSON").empty();
                 this.$el.appendTo("#mainformJSON");
             }
         })
