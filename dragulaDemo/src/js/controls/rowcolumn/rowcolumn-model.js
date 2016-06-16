@@ -7,8 +7,8 @@ define([
 ) {
         return Base.extend({
             defaults: {
-                control: 'row',
-                columns: []
+                control: 'rowcolumn',
+                classname: 'col-md-6'
             }            
         });
     });

@@ -9,7 +9,7 @@ define([
 ) {
         return Backbone.View.extend({
             tagName: "div"
-            , className: "form-group ctrl ctrl-input-text cls-instance"
+            , className: "ctrl ctrl-input-text form-group"
             , initialize: function () {
                 if (this.model) {
                     this.model.on('change', this.render, this);
@@ -17,6 +17,7 @@ define([
             }
             , render: function () {
                 var that = this;
+                this.$el.empty();
                 if(this.model.selected) {
                     $(".ctrl-selected").removeClass("ctrl-selected");
                     this.$el.addClass("ctrl-selected");

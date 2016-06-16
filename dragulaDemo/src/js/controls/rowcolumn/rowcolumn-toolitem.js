@@ -1,7 +1,7 @@
 define([
     "jquery", "underscore", "backbone"
     , "help/pubsub", "controls/temp-toolitem"
-    , "controls/row/row-model", "controls/row/row"
+    , "controls/rowcolumn/rowcolumn-model", "controls/rowcolumn/rowcolumn"
 ], function (
     $, _, Backbone
     , PubSub, TempToolItem
@@ -14,7 +14,7 @@ define([
 
             }
             , render: function () {
-                return this.$el.html('行');
+                return this.$el.html('列');
             }
             , events: {
                 "mousedown": "mouseDownHandler"

@@ -9,7 +9,7 @@ define([
 ) {
         return Backbone.View.extend({
             tagName: "div"
-            , className: "ctrl ctrl-input-text"
+            , className: "ctrl"
             , initialize: function () {
 
             }

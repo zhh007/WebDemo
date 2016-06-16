@@ -1,15 +1,19 @@
 define([
     'jquery', 'underscore', 'backbone'
     , "controls/input-text/input-text-toolitem"
-    , "controls/row/row-toolitem"
+    , "controls/row/row-toolitem", "controls/rowcolumn/rowcolumn-toolitem" 
 ], function (
     $, _, Backbone
-    , inputText, row) {
+    , inputText, row, rowcolumn) {
     return Backbone.View.extend({
         tagName: "div"
         , className: "panel panel-default"
         , initialize: function () {
-            this.collection = [new row(), new inputText()];
+            this.collection = [
+                new row()
+                //, new rowcolumn()
+                , new inputText()
+                ];
             this.render();
         }
         , render: function () {

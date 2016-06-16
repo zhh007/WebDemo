@@ -51,8 +51,8 @@
     border:none
 }
 
-.temp .row {
-    min-height: 50px
+.temp .ctrl-row {
+    margin: 0
 }
 
 /*拖拽目标*/
@@ -63,6 +63,7 @@
     background: #f0f0f0;
     width: 100%;
     border: 1px dashed #ccc;
+    display: block
 }
 
 .target-first::before {
@@ -72,6 +73,7 @@
     background: #f0f0f0;
     width: 100%;
     border: 1px dashed #ccc;
+    display: block
 }
 
 /*表单*/
@@ -88,9 +90,16 @@
 }
 
 .ctrl-selected {
-    border:1px dashed #ff0000
+    border:1px dashed #ff0000;
+    background: #ffe!important
 }
 
-#mainform .row {
-    min-height: 40px
+.ctrl-row {
+    min-height: 40px;
+    background: #eff;
+    padding-left: 20px; 
+}
+.ctrl-rowcolumn {
+    min-height: 40px;
+    background: #fef
 }

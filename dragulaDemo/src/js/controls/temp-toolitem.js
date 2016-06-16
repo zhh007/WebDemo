@@ -27,7 +27,7 @@ define([
             , centerOnEvent: function (mouseEvent) {
                 var mouseX = mouseEvent.pageX;
                 var mouseY = mouseEvent.pageY;
-                this.$el.css({position: 'absolute', top: (mouseY - this.halfHeight) + "px", left: (mouseX - 20) + "px"});
+                this.$el.css({position: 'absolute', top: (mouseY - 20) + "px", left: (mouseX - 20) + "px"});
                 PubSub.trigger("ToolboxItemMove", mouseEvent);
             }
             , mouseMoveHandler: function (mouseEvent) {

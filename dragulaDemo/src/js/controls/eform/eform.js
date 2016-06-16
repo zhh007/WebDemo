@@ -58,7 +58,7 @@ define([
         var that = this;
 
         this.clearAllSelected();
-        this.$el.addClass("ctrl-selected");
+        this.$el.parent().addClass("ctrl-selected");
 
         var propbox = $('#propTable');
         propbox.empty().off();
@@ -145,6 +145,10 @@ define([
         }
       }
       , handleControlSelected: function (control) {
+        if(this.current){
+          this.current.model.selected = false;
+        }
+        this.current = control;
         this.clearAllSelected();
         control.model.selected = true;
         control.$el.addClass("ctrl-selected");
