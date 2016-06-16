@@ -4,12 +4,14 @@ define([
     , "controls/formcontrols"
     , "codegen/modelbuilder"
     , "templates/codegen/codedialog"
+    , "controls/allcontrols"
 ], function (
     $, _, Backbone, bootstrap, shCore, shJs, shXml
     , ToolBox, EForm, EFormModel
     , FormControls
     , modelgen
     , codedialog
+    , allCtrls
 ) {
         return {
             initialize: function () {
@@ -17,6 +19,8 @@ define([
                 var formmodel = new EFormModel();
                 formmodel.set('ctrls', new FormControls());
                 var form = new EForm({model: formmodel});
+
+                window._allCtrls = allCtrls;
 
                 $('.btn-build').click(function() {
                     var brush = new SyntaxHighlighter.brushes.Xml();

@@ -101,6 +101,7 @@ define([
       }
 
       , handleControlDrag: function (mouseEvent, ctrl) {
+        if(ctrl.$el.parent().hasClass("ctrl-rowcolumn")) return;
         //创建移动中的临时控件
         $("body").append(new TempToolItem({ control: ctrl }).render());
         this.collection.remove(ctrl.model);
@@ -130,6 +131,9 @@ define([
       }
 
       , handleToolboxItemDrop: function (mouseEvent, control, index) {
+        if ($(".target").hasClass("ctrl-rowcolumn")) {
+          return;
+        }
         if (mouseEvent.pageX >= this.$build.offset().left &&
           mouseEvent.pageX < (this.$build.width() + this.$build.offset().left) &&
           mouseEvent.pageY >= this.$build.offset().top &&
@@ -145,7 +149,7 @@ define([
         }
       }
       , handleControlSelected: function (control) {
-        if(this.current){
+        if (this.current) {
           this.current.model.selected = false;
         }
         this.current = control;

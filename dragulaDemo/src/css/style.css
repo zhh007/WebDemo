@@ -51,7 +51,7 @@
     border:none
 }
 
-.temp .ctrl-row {
+.temp .ctrl {
     margin: 0
 }
 
@@ -74,6 +74,14 @@
     width: 100%;
     border: 1px dashed #ccc;
     display: block
+}
+
+.ctrl-row .target {
+    background: #f0f0f0;
+    border: 1px dashed #ccc;
+}
+.ctrl-row .target:after {
+    content: none;
 }
 
 /*表单*/
@@ -101,5 +109,5 @@
 }
 .ctrl-rowcolumn {
     min-height: 40px;
-    background: #fef
+    background: #eff
 }
