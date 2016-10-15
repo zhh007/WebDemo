@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<?xml-stylesheet type="text/xsl" href="menu2.xsl"?>
+<SecurityAccess>
+  <Modules>
+    <Module ID="1" Name="News" Remark="新闻管理">
+      <Module ID="11" Name="News" Remark="新闻管理2">
+        <Actions>
+          <Action ID="301" Name="News_add" Remark="添加新闻"/>
+          <Action ID="302" Name="News_modify" Remark="修改新闻"/>
+          <Action ID="303" Name="News_delete" Remark="删除新闻"/>
+        </Actions>
+      </Module>
+      <Module ID="12" Name="News" Remark="新闻管理2">
+        <Actions>
+          <Action ID="301" Name="News_add" Remark="添加新闻"/>
+          <Action ID="302" Name="News_modify" Remark="修改新闻"/>
+          <Action ID="303" Name="News_delete" Remark="删除新闻"/>
+        </Actions>
+      </Module>
+      <Actions>
+        <Action ID="301" Name="News_add" Remark="添加新闻"/>
+        <Action ID="302" Name="News_modify" Remark="修改新闻"/>
+        <Action ID="303" Name="News_delete" Remark="删除新闻"/>
+      </Actions>
+    </Module>
+    <Module ID="2" Name="News" Remark="新闻管理2">
+      <Module ID="21" Name="News" Remark="新闻管理2">
+        <Actions>
+          <Action ID="301" Name="News_add" Remark="添加新闻"/>
+          <Action ID="302" Name="News_modify" Remark="修改新闻"/>
+          <Action ID="303" Name="News_delete" Remark="删除新闻"/>
+        </Actions>
+      </Module>
+      <Module ID="22" Name="News" Remark="新闻管理2">
+        <Actions>
+          <Action ID="301" Name="News_add" Remark="添加新闻"/>
+          <Action ID="302" Name="News_modify" Remark="修改新闻"/>
+          <Action ID="303" Name="News_delete" Remark="删除新闻"/>
+        </Actions>
+      </Module>
+      <Module ID="23" Name="News" Remark="新闻管理2">
+        <Module ID="231" Name="News" Remark="新闻管理2">
+          <Actions>
+            <Action ID="301" Name="News_add" Remark="添加新闻"/>
+            <Action ID="302" Name="News_modify" Remark="修改新闻"/>
+            <Action ID="303" Name="News_delete" Remark="删除新闻"/>
+          </Actions>
+        </Module>
+        <Module ID="231" Name="News" Remark="新闻管理2">
+          <Actions>
+            <Action ID="301" Name="News_add" Remark="添加新闻"/>
+            <Action ID="302" Name="News_modify" Remark="修改新闻"/>
+            <Action ID="303" Name="News_delete" Remark="删除新闻"/>
+          </Actions>
+        </Module>
+        <Module ID="231" Name="News" Remark="新闻管理2">
+        </Module>
+      </Module>
+      <Actions>
+        <Action ID="301" Name="News_add" Remark="添加新闻"/>
+        <Action ID="302" Name="News_modify" Remark="修改新闻"/>
+        <Action ID="303" Name="News_delete" Remark="删除新闻"/>
+      </Actions>
+    </Module>
+  </Modules>
+</SecurityAccess>

@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="menu2.xsl"?>
+<menu>
+  <menuItem Name="File">
+    <menuItem Name="Open"/>
+    <menuItem Name="exit">
+      <menuItem Name="exit as minimum"/>
+      <menuItem Name="exit as shutDown"/>
+    </menuItem>
+  </menuItem>
+  <menuItem Name="edit">
+    <menuItem Name="undo"/>
+    <menuItem Name="del">
+      <menuItem Name="del"/>
+      <menuItem Name="del line"/>
+      <menuItem Name="del to start of line"/>
+    </menuItem>
+  </menuItem>
+</menu>
